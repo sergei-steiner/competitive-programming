@@ -30,6 +30,7 @@ vector<int> z_func(const string& s) {
 int main() {
     string s;
     cin >> s;
+	int n = sz(s);
     vector<int> z = z_func(s);
     for (int i = 0; i < n; ++i) {
         cout << "z[" << i << "] = " << z[i] << endl;

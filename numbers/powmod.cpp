@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-consexpr int64 mod = 1000000007;
+constexpr int64 mod = 1000000007;
 
 int64 powmod(int64 a, int64 n, int64 p = mod) {
     if (n == 0) return 1 % p;

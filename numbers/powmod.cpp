@@ -22,6 +22,7 @@ int main() {
     int64 a;
     int64 n;
     int64 p;
+    cin >> a >> n >> p ;
     cout << powmod(a, n, p) << endl;
     return 0;
 }

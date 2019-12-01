@@ -57,7 +57,6 @@ int main() {
             int pos;
             int value;
             cin >> pos >> value;
-			cout << pos << " " << value << endl;
             f.inc(pos, value);
         }
     }

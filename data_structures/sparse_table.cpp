@@ -17,12 +17,12 @@ public:
 
     SparseTable(const vector<int>& a)
         : n(a.size())
-        , log(N + 1, 0)
+        , log(n + 1, 0)
     {
         t.push_back(a);
         int len = 1;
-        while (len * 2 < n) {
-            vector<int>& current = table.back();
+        while (len * 2 <= n) {
+            vector<int>& current = t.back();
             vector<int> next(n, 0);
             for (int i = 0; i + len < n; ++i) {
                 next[i] = min(current[i], current[i + len]);
@@ -37,7 +37,7 @@ public:
 
     int get_min(int l, int r) const {
         int log2 = log[r - l + 1];
-        return min(table[log2][l], Table[log2][r + 1 - (1 << log2)]);
+        return min(t[log2][l], t[log2][r + 1 - (1 << log2)]);
     }
 };
 
@@ -45,8 +45,10 @@ int main() {
     int n;
     cin >> n;
     vector<int> a(n);
-    for (int i = 0; i < n; ++i) a[i] = i;
-    SparseTable table(a);
+    for (int i = 0; i < n; ++i) {
+		cin >> a[i];
+    }
+	SparseTable table(a);
     while (true) {
         int l;
         int r;

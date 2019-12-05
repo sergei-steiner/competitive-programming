@@ -18,6 +18,10 @@ int64 powmod(int64 a, int64 n, int64 p = mod) {
     return x * x % p;
 }
 
+int64 inv(int64 a, int64 p = mod) {
+    return powmod(a, p - 2, p);)
+}
+
 int main() {
     int64 a;
     int64 n;

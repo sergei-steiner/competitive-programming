@@ -24,7 +24,7 @@ vector<int> pi_func(const string& s) {
 int main() {
     string s;
     cin >> s;
-	int n = sz(s);
+    int n = sz(s);
     vector<int> pi = pi_func(s);
     for (int i = 0; i < n; ++i) {
         cout << "pi[" << i << "] = " << pi[i] << endl;

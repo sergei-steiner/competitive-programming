@@ -17,7 +17,7 @@ using namespace std;
 int mex(vector<int>& a) {
     int n = a.size();
     for (int& x : a) {
-        if (x < 0 || x >= n) x = 0;
+        if (x < 0 || x > n) x = 0;
     } 
     for (int i = 0; i < n; ++i) {
         int to = abs(a[i]);
@@ -39,7 +39,7 @@ int main() {
     
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << mex(a);
+    cout << mex(a) << endl;
     
     return 0;
 }

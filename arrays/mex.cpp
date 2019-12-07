@@ -14,7 +14,7 @@ using namespace std;
 // additional memory O(1)
 // messing around with initial array is allowed
 
-int mex(vector<int>& a) {
+int mex_bit_trick(vector<int>& a) {
     int n = a.size();
     for (int& x : a) {
         if (x < 0 || x > n) x = 0;
@@ -33,13 +33,29 @@ int mex(vector<int>& a) {
 }
 
 
+int mex_inplace_sort(vector<int>& a) {
+    int n = a.size();
+    for (int i = 0; i < n; ++i) {
+        int j = i;
+        while (a[j] != j + 1 && a[j] > 0 && a[j] <= n) {
+            if (a[a[j] - 1] == a[j]) break;
+            swap(a[a[j] - 1], a[j]);
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        if (a[i] != i + 1) return i + 1;
+    }
+    return n + 1;
+ }
+
+
 int main() {
     int n;
     cin >> n;
     
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << mex(a) << endl;
+    cout << mex_bit_trick(a) << " " << mex_inplace_sort(a) << endl;
     
     return 0;
 }

@@ -55,7 +55,7 @@ int main() {
     
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << mex_bit_trick(a) << " " << mex_inplace_sort(a) << endl;
+    cout << mex_inplace_sort(a) << " " << mex_bit_trick(a)  << endl;
     
     return 0;
 }

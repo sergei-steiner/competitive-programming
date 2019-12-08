@@ -35,11 +35,11 @@ ListNode* reverseList(ListNode* head) {
 int main() {
     int n;
     cin >> n;
-    
+    if (n == 0) return 0;
     int x;
     cin >> x;
     auto head = new ListNode(x);
-    auto cur;
+    auto cur = head;
     
     for (int i = 1; i < n; ++i) {
         int x;

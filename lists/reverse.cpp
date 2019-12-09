@@ -32,6 +32,13 @@ ListNode* reverseList(ListNode* head) {
     }
 }
 
+ListNode* reverseListRecursive(ListNode* head) {
+    if (head == nullptr || head->next == nullptr) return head;
+    ListNode* reversed = reverseListRecursive(head->next);
+    head->next->next = head;
+    return reversed;
+}
+
 int main() {
     int n;
     cin >> n;
@@ -52,6 +59,13 @@ int main() {
         cout << head->val << " ";
         head = head->next;
     }
-
+    cout << endl;
+   
+    head = reverseRecursive(head);
+    while (head) {
+        cout << head->val << " ";
+        head = head->next;
+    }
+    cout << endl;
     return 0;
 }

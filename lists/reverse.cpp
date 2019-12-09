@@ -36,6 +36,7 @@ ListNode* reverseListRecursive(ListNode* head) {
     if (head == nullptr || head->next == nullptr) return head;
     ListNode* reversed = reverseListRecursive(head->next);
     head->next->next = head;
+    head->next = nullptr; 
     return reversed;
 }
 

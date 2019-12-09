@@ -55,7 +55,7 @@ int main() {
         cur = cur->next;
     } 
     head = reverseList(head);
-    auto cur = head; 
+    cur = head; 
     while (cur) {
         cout << cur->val << " ";
         cur = head->next;

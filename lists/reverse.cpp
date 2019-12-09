@@ -59,7 +59,7 @@ int main() {
     cur = head; 
     while (cur) {
         cout << cur->val << " ";
-        cur = head->next;
+        cur = cur->next;
     }
     cout << endl;
    
@@ -67,7 +67,7 @@ int main() {
     cur = head; 
     while (cur) {
         cout << cur->val << " ";
-        cur = head->next;
+        cur = cur->next;
     }
     cout << endl;
     return 0;

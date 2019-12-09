@@ -36,10 +36,12 @@ int mex_bit_trick(vector<int>& a) {
 int mex_inplace_sort(vector<int>& a) {
     int n = a.size();
     for (int i = 0; i < n; ++i) {
-        int j = i;
-        while (a[j] != j + 1 && a[j] > 0 && a[j] <= n) {
-            if (a[a[j] - 1] == a[j]) break;
-            swap(a[a[j] - 1], a[j]);
+        while (a[i] != i + 1 &&
+               a[i] > 0 &&
+               a[i] <= n &&
+               a[a[i] - 1] != a[i])
+        {
+            swap(a[a[i] - 1], a[i]);
         }
     }
     for (int i = 0; i < n; ++i) {

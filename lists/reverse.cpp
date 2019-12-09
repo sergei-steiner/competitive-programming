@@ -61,7 +61,7 @@ int main() {
     }
     cout << endl;
    
-    head = reverseRecursive(head);
+    head = reverseListRecursive(head);
     while (head) {
         cout << head->val << " ";
         head = head->next;

@@ -55,16 +55,18 @@ int main() {
         cur = cur->next;
     } 
     head = reverseList(head);
-    while (head) {
-        cout << head->val << " ";
-        head = head->next;
+    auto cur = head; 
+    while (cur) {
+        cout << cur->val << " ";
+        cur = head->next;
     }
     cout << endl;
    
     head = reverseListRecursive(head);
-    while (head) {
-        cout << head->val << " ";
-        head = head->next;
+    cur = head; 
+    while (cur) {
+        cout << cur->val << " ";
+        cur = head->next;
     }
     cout << endl;
     return 0;

@@ -18,7 +18,7 @@ int64 max_product_3(const vector<int>& a) {
     int max3 = numeric_limits<int>::min();
     for (int x : a) {
         if (x <= min1) {
-            min2 = x;
+            min2 = min1;
             min1 = x;
         } else if (x <= min2) {
             min2 = x;
@@ -29,7 +29,7 @@ int64 max_product_3(const vector<int>& a) {
             max1 = x;
         
         } else if (x >= max2) {
-            
+    
             max3 = max2;
             max2 = x;
         } else if (x >= max3) {

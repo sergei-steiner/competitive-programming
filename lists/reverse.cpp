@@ -10,12 +10,12 @@ typedef long long int64;
 using namespace std;
 
 struct ListNode {
-   int val;
-   ListNode *next;
+   int val = 0;
+   ListNode* next = nullptr;
    ListNode(int x)
        : val(x)
-       , next(nullptr)
-   {}
+   {
+   }
 };
 
 ListNode* reverseList(ListNode* head) {

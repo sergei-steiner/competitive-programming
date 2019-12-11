@@ -36,7 +36,7 @@ int64 max_product_3(const vector<int>& a) {
             max3 = x;
         }
     }
-    return max((int64)min1 * min2 * max1, (int64)max1 * max2 * max3));
+    return max((int64)min1 * min2 * max1, (int64)max1 * max2 * max3);
 }
 
 int main() {

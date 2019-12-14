@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-bool nextCombination(const vector<int>& c, int n) {
+bool nextCombination(vector<int>& c, int n) {
     int k = c.size();
     int next = n;
     for (int i = k - 1; i >= 0; --i) {
@@ -31,9 +31,9 @@ int main() {
     vector<int> c(k);
     for (int i = 0; i < k; ++i) c[i] = i;
     while (true) {
-        for (int j = 0; j < k; ++j) cout << c[j] << " ";
+        for (int j = 0; j < k; ++j) cout << c[j] + 1 << " ";
         cout << endl;
-        if (!nextCombination(c)) {
+        if (!nextCombination(c, n)) {
             break; 
         }
     }

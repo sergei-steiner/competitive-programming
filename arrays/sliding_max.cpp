@@ -1,25 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@sergei-steiner 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
- 
-1
-0 0 sergei-steiner/competitive-programming
- Code  Issues 0  Pull requests 0  Actions  Projects 0  Wiki  Security  Insights  Settings
-competitive-programming/arrays/max_product.cpp
-@sergei-steiner sergei-steiner fix)
-2e40281 4 days ago
-50 lines (42 sloc)  1.11 KB
-    
 #include <bits/stdc++.h>
 
 #define sz(x) ((int)x.size())

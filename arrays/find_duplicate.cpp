@@ -9,42 +9,32 @@ typedef long long int64;
 
 using namespace std;
 
-int64 largestRectangleAreaTwoStacks(vector<int>& h) {
-    int n = h.size();
-    if (n == 0) return 0;
-    
-    stack<int> st;
-    
-    vector<int> left(n, -1);
-    st.push(0);
-    for (int i = 1; i < n; ++i) {
-        while (!st.empty() && h[st.top()] >= h[i]) st.pop();
-        if (!st.empty()) left[i] = st.top();
-        st.push(i);
+int findDuplicate(const vector<int>& a) {
+    int x = a.size() - 1;
+    int y = a.size() - 1;
+    while (true) {
+        x = a[x] - 1;
+        y = a[y] - 1;
+        y = a[y] - 1;
+        if (x == y) break;
     }
-    
-    st = {};
-    st.push(n - 1);
-    vector<int> right(n, n);
-    for (int i = n - 2; i >= 0; --i) {
-        while (!st.empty() && h[st.top()] >= h[i]) st.pop();
-        if (!st.empty()) right[i] = st.top();
-        st.push(i);
+    x = a.size() - 1;
+    while (true) {
+        if (x == y) {
+            return x + 1;
+        }
+        x = a[x] - 1;
+        y = a[y] - 1;
     }
-    int64 ans = 0;
-    for (int i = 0; i < n; ++i) {
-        ans = max(ans, (int64)h[i] * (right[i] - left[i] - 1));
-    }    
-    return ans;
 }
     
 int main() {
     int n;
     cin >> n;
     
-    vector<int> h(n);
-    for (int i = 0; i < n; ++i) cin >> h[i];
-    cout << largestRectangleAreaTwoStacks(a) << endl;
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
+    cout << findDuplicate(a) << endl;
     
     return 0;
 }

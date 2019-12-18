@@ -9,6 +9,13 @@ typedef long long int64;
 
 using namespace std;
 
+/*
+
+can try here:
+https://leetcode.com/problems/find-the-duplicate-number/
+
+*/
+
 int findDuplicate(const vector<int>& a) {
     int x = a.size() - 1;
     int y = a.size() - 1;

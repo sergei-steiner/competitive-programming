@@ -47,8 +47,8 @@ int64 largestRectangleArea(const vector<vector<int>>& a) {
     vector<int> h(m, 0);
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
-            if (a[i][j] == '0') h[j] = 0;
-            if (a[i][j] == '1') ++h[j];        
+            if (a[i][j] == 0) h[j] = 0;
+            if (a[i][j] == 1) ++h[j];        
         }
         ans = max(ans, largestRectangleArea(h));
     }

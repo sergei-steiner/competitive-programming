@@ -39,12 +39,12 @@ int64 largestRectangleArea(vector<int>& h) {
 }
 
 int64 largestRectangleArea(const vector<vector<int>>& a) {
-    int n = a.size();
+    int64 n = a.size();
     if (n == 0) return 0;
-    int m = a[0].size();
+    int64 m = a[0].size();
     if (m == 0) return 0;
-    int ans = 0;
-    vector<int> h(m, 0);
+    int64 ans = 0;
+    vector<int64> h(m, 0);
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
             if (a[i][j] == '0') h[j] = 0;

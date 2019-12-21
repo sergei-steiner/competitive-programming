@@ -29,6 +29,53 @@ vector<int> max_sliding_window(vector<int>& a, int k) {
     return ans;
 }
 
+struct MaxQueue {
+    deque<pair<int, int>> d;
+    
+    void push(int val) {
+        int cnt = 1;
+        while (!d.empty() && d.back().first <= val) {
+            cnt += d.back().second;
+            d.pop_back();
+        }
+        d.emplace_back(val, cnt);
+    }
+
+    void pop() {
+        int val = d.front().first;
+        int cnt = d.front().second - 1;
+        d.pop_front();
+        if (cnt > 0) {
+            d.emplace_front(val, cnt);
+        }
+    }
+    
+    bool empty() const {
+        return d.empty();
+    }
+    
+    int max() const {
+        return d.front().first;
+    }
+};
+
+vector<int> max_sliding_window_max_queue(vector<int>& a, int k) {
+    int n = a.size();
+    if (n == 0) return {};
+    MaxQueue q;
+    for (int i = 0; i + 1 < k; ++i) {
+        q.push(a[i]);
+    }
+    vector<int> ans;
+    for (int i = k - 1; i < n; ++i) {
+        q.push(a[i]);
+        if (i >= k) q.pop();
+        ans.push_back(q.max());
+    }
+    return ans;
+}
+
+
 int main() {
     int n;
     cin >> n;
@@ -38,5 +85,9 @@ int main() {
     for (int i = 0; i < n; ++i) cin >> a[i];
     for (int x : max_sliding_window(a, k)) cout << x << " ";
     cout << endl;
+    for (int x : max_sliding_window_max_queue(a, k)) cout << x << " ";
+    cout << endl;
+    
+    
     return 0;
 }

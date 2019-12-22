@@ -126,6 +126,7 @@ struct MaxQueueStacks {
     }
     
     int max() const {
+        using std::max;
         return max(first.max(), second.max());
     }
 };

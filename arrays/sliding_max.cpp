@@ -76,6 +76,75 @@ vector<int> max_sliding_window_max_queue(vector<int>& a, int k) {
 }
 
 
+struct MaxStack {
+    stack<pair<int, int>> st;
+    
+    void push(int val) {
+        int maxval = val;
+        if (!st.empty()) {
+            maxval = max(maxval, val);
+        }
+        st.push({val, maxval});
+    }
+
+    int pop() {
+        int val = st.top();
+        st.pop();
+        return val;
+    }
+
+    bool empty() const {
+        return st.empty();
+    }
+    
+    int max() const {
+        return st.top().second;
+    }
+    
+}
+struct MaxQueueStacks {
+    MaxStack first;
+    MaxStack second;
+
+    void push(int val) {
+        first.push(val);
+    }
+
+    void pop() {
+        if (second.empty()) {
+            while (!first.empty()) {
+                 second.push(first.pop());
+            }
+        }
+        second.pop();
+    }
+    
+    bool empty() const {
+        return first.empty() && second.empty();
+    }
+    
+    int max() const {
+        return max(first.max(), second.max());
+    }
+};
+
+vector<int> max_sliding_window_max_queue_two_stacks(vector<int>& a, int k) {
+    int n = a.size();
+    if (n == 0) return {};
+    MaxQueueStacks q;
+    for (int i = 0; i + 1 < k; ++i) {
+        q.push(a[i]);
+    }
+    vector<int> ans;
+    for (int i = k - 1; i < n; ++i) {
+        q.push(a[i]);
+        if (i >= k) q.pop();
+        ans.push_back(q.max());
+    }
+    return ans;
+}
+
+
 int main() {
     int n;
     cin >> n;
@@ -87,6 +156,9 @@ int main() {
     cout << endl;
     for (int x : max_sliding_window_max_queue(a, k)) cout << x << " ";
     cout << endl;
+    for (int x : max_sliding_window_max_queue_two_stacks(a, k)) cout << x << " ";
+    cout << endl;
+    
     
     
     return 0;

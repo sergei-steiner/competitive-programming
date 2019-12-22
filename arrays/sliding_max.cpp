@@ -82,13 +82,13 @@ struct MaxStack {
     void push(int val) {
         int maxval = val;
         if (!st.empty()) {
-            maxval = max(maxval, val);
+            maxval = max(maxval, st.top().second);
         }
         st.push({val, maxval});
     }
 
     int pop() {
-        int val = st.top();
+        int val = st.top().second;
         st.pop();
         return val;
     }
@@ -101,7 +101,8 @@ struct MaxStack {
         return st.top().second;
     }
     
-}
+};
+
 struct MaxQueueStacks {
     MaxStack first;
     MaxStack second;

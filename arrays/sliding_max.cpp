@@ -80,6 +80,7 @@ struct MaxStack {
     stack<pair<int, int>> st;
     
     void push(int val) {
+        using std::max;
         int maxval = val;
         if (!st.empty()) {
             maxval = max(maxval, st.top().second);

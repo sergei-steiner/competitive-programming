@@ -16,7 +16,7 @@ int majority(const vector<int>& a, int k) {
         ++cands[x];
         if (cands.size() == k) {
             for (auto it = cands.begin(); it != cands.end(); ) {
-                --it.second;
+                --it->second;
                 if (it->second == 0) {
                     it = cands.erase(it);
                 } else {

@@ -10,6 +10,7 @@ typedef long long int64;
 using namespace std;
 
 int majority(const vector<int>& a, int k) {
+    int n = a.size();
     unordered_map<int> cands;
     for (int x : a) {
         ++cands[x];

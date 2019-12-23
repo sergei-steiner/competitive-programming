@@ -11,7 +11,7 @@ using namespace std;
 
 int majority(const vector<int>& a, int k) {
     int n = a.size();
-    unordered_map<int> cands;
+    unordered_map<int, int> cands;
     for (int x : a) {
         ++cands[x];
         if (cands.size() == k) {
@@ -26,7 +26,7 @@ int majority(const vector<int>& a, int k) {
         }
     }
     
-    unordered_map<int> counts;
+    unordered_map<int, int> counts;
     for (int x : a) {
         if (cands.count(x)) {
             ++counts[x];

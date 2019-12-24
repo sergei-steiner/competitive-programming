@@ -19,11 +19,11 @@ struct TreeNode {
    }
 };
 
-void dfs_inorder(TreeNode* root, vector<int> ans) {
+void dfs_inorder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
-    dfs_inorder(root->left);
-    ans.push_back(root->val);
-    dfs_inorder(root->right);
+    dfs_inorder(root->left, traversal);
+    traversal.push_back(root->val);
+    dfs_inorder(root->right, traversal);
 }
 
 vector<int> inorder(TreeNode* root) {
@@ -32,11 +32,11 @@ vector<int> inorder(TreeNode* root) {
     return ans;
 }
 
-void dfs_preoder(TreeNode* root, vector<int> ans) {
+void dfs_preoder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
-    ans.push_back(root->val);
-    dfs_preoder(root->left);
-    dfs_preoder(root->right);
+    traversal.push_back(root->val);
+    dfs_preoder(root->left, traversal);
+    dfs_preoder(root->right, traversal);
 }
 
 vector<int> preorder(TreeNode* root) {
@@ -45,11 +45,11 @@ vector<int> preorder(TreeNode* root) {
     return ans;
 }
 
-void dfs_postoder(TreeNode* root, vector<int> ans) {
+void dfs_postoder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
-    dfs_postoder(root->left);
-    dfs_postoder(root->right);
-    ans.push_back(root->val);
+    dfs_postoder(root->left, traversal);
+    dfs_postoder(root->right, traversal);
+    traversal.push_back(root->val);
 }
 
 vector<int> postoder(TreeNode* root) {

@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-int majority(const vector<int>& a, int k) {
+vector<int> majority(const vector<int>& a, int k) {
     int n = a.size();
     unordered_map<int, int> cands;
     for (int x : a) {
@@ -30,12 +30,15 @@ int majority(const vector<int>& a, int k) {
     for (int x : a) {
         if (cands.count(x)) {
             ++counts[x];
-            if (counts[x] * k > n) {
-                return x;
-            }
         }
     }
-    return -1;
+    vector<int> ans;
+    for (auto [key, value] : counts) {
+        if (value * k > n) {
+            ans.push_back(key);
+        }
+    }
+    return ans;
 }
 
 int main() {
@@ -45,7 +48,8 @@ int main() {
     cin >> k;
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << majority(a, k) << endl;
+    for (int x : majority(a, k)) cout << x << " ";
+    cout << endl;
 
     return 0;
 }

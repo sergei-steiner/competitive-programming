@@ -19,6 +19,9 @@ struct TreeNode {
    }
 };
 
+
+https://leetcode.com/problems/binary-tree-inorder-traversal/
+
 void dfs_inorder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
     dfs_inorder(root->left, traversal);
@@ -26,11 +29,13 @@ void dfs_inorder(TreeNode* root, vector<int>& traversal) {
     dfs_inorder(root->right, traversal);
 }
 
-vector<int> inorder(TreeNode* root) {
+vector<int> inorderTraversal(TreeNode* root) {
     vector<int> ans;
     dfs_inorder(root, ans);
     return ans;
 }
+
+// https://leetcode.com/problems/binary-tree-preorder-traversal/
 
 void dfs_preoder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
@@ -39,11 +44,13 @@ void dfs_preoder(TreeNode* root, vector<int>& traversal) {
     dfs_preoder(root->right, traversal);
 }
 
-vector<int> preorder(TreeNode* root) {
+vector<int> preorderTraversal(TreeNode* root) {
     vector<int> ans;
     dfs_preoder(root, ans);
     return ans;
 }
+
+// https://leetcode.com/problems/binary-tree-postorder-traversal/
 
 void dfs_postoder(TreeNode* root, vector<int>& traversal) {
     if (!root) return;
@@ -52,7 +59,7 @@ void dfs_postoder(TreeNode* root, vector<int>& traversal) {
     traversal.push_back(root->val);
 }
 
-vector<int> postoder(TreeNode* root) {
+vector<int> postoderTraversal(TreeNode* root) {
     vector<int> ans;
     dfs_postoder(root, ans);
     return ans;

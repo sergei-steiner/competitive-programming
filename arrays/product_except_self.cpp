@@ -12,28 +12,28 @@ using namespace std;
 // https://leetcode.com/problems/find-the-duplicate-number/
 
 vector<int> productExceptSelf(vector<int>& a) {
-        int n = a.size();
-        vector<int> prefix(n);
-        prefix[0] = a[0];
-        for (int i = 1; i < n; ++i) {
-            prefix[i] = prefix[i - 1] * a[i];
-        }
-        vector<int> suffix(n);
-        suffix[n - 1] = a[n - 1];
-        for (int i = n - 2; i >= 0; --i) {
-            suffix[i] = a[i] * suffix[i + 1];
-        }
-        vector<int> res(n, 1);
-        for (int i = 0; i < n; ++i) {
-            if (i > 0) {
-                 res[i] *= prefix[i - 1];    
-            }
-            if (i + 1 < n) {
-                 res[i] *= suffix[i + 1];
-            }
-        }
-        return res;
+    int n = a.size();
+    vector<int> prefix(n);
+    prefix[0] = a[0];
+    for (int i = 1; i < n; ++i) {
+        prefix[i] = prefix[i - 1] * a[i];
     }
+    vector<int> suffix(n);
+    suffix[n - 1] = a[n - 1];
+    for (int i = n - 2; i >= 0; --i) {
+        suffix[i] = a[i] * suffix[i + 1];
+    }
+    vector<int> ans(n, 1);
+    for (int i = 0; i < n; ++i) {
+        if (i > 0) {
+             ans[i] *= prefix[i - 1];    
+        }
+        if (i + 1 < n) {
+            ans[i] *= suffix[i + 1];
+        }
+     }
+     return ans;
+ }
 
 int main() {
     int n;

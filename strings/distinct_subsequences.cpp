@@ -37,6 +37,6 @@ int main() {
     
     string s;
     cin >> s;
-    cout << distinct_subsequences(a) << endl;
+    cout << distinct_subsequences(s) << endl;
     return 0;
 }

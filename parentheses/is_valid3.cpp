@@ -11,7 +11,7 @@ using namespace std;
 
 /*
 can try here:
-https://leetcode.com/problems/find-the-duplicate-number/
+https://leetcode.com/problems/valid-parentheses
 */
 
 bool isValid(const string& s) {

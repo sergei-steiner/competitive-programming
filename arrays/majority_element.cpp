@@ -12,6 +12,7 @@ using namespace std;
 
 vector<int> majorityRandomize(const vector<int>& a, int k) {
     int n = a.size();
+    if (n == 0) return {};
     unordered_set<int> ans;
     for (int i = 0; i < 30 * k; ++i) {
         int num = a[rand() % n];

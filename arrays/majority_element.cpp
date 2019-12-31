@@ -9,6 +9,21 @@ typedef long long int64;
 
 using namespace std;
 
+
+vector<int> majorityRandomize(const vector<int>& a, int k) {
+    int n = a.size();
+    unordered_set<int> ans;
+    for (int i = 0; i < 30 * k; ++i) {
+        int num = a[rand() % n];
+        int count = 0;
+        for (int x : a) {
+            if (x == num) ++count;
+        }
+        if (count * k > n) ans.insert(num); 
+    }
+    return {ans.begin(), ans.end()};
+}
+
 vector<int> majority(const vector<int>& a, int k) {
     int n = a.size();
     unordered_map<int, int> cands;

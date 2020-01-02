@@ -35,6 +35,35 @@ vector<int> inorderTraversal(TreeNode* root) {
     return ans;
 }
 
+// Morris Traversal
+
+vector<int> inorderMorrisTraversal(TreeNode* root) {  
+    vector<int> ans;
+    TreeNode* current = root;
+    while (current != nullptr) { 
+        if (current->left == nullptr) { 
+            ans.push_back(current->val); 
+            current = current->right; 
+        } else { 
+           
+            TreeNode* pred = current->left; 
+            while (pred->right != nullptr && pred->right != current) {
+                pred = pred->right; 
+            }
+  
+            if (pred->right == nullptr) { 
+                pred->right = current; 
+                current = current->left; 
+            } else { 
+                pred->right = nullptr; 
+                ans.push_back(current->val); 
+                current = current->right; 
+           }
+        }
+    }
+    return ans;
+} 
+
 // https://leetcode.com/problems/binary-tree-preorder-traversal/
 
 void dfs_preoder(TreeNode* root, vector<int>& traversal) {

@@ -12,7 +12,7 @@ using namespace std;
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 
-int maxProfit(vector<int>& prices) {
+int maxProfit(const vector<int>& prices) {
     int n = prices.size();
     if (n == 0) return 0; 
     vector<int> dp1(n);
@@ -26,6 +26,23 @@ int maxProfit(vector<int>& prices) {
     return dp1[n - 1];
  }
 
+int maxProfitValleyPeak(const vector<int>& prices) {
+    int n = prices.size();
+    if (n == 0) return 0;
+    int i = 0;
+    int valley = prices[0];
+    int peak = prices[0];
+    int ans = 0;
+    while (i + 1 < n) {
+        while (i + 1 < n && prices[i] >= prices[i + 1]) ++i;
+        valley = prices[i];
+        while (i + 1 < n && prices[i] <= prices[i + 1]) ++i;
+        peak = prices[i];
+        ans += peak - valley;
+    }
+    return ans;
+}
+
 
 int main() {
     int n;
@@ -33,6 +50,6 @@ int main() {
     
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << maxProfit(a) << endl;
+    cout << maxProfit(a) << " " << maxProfitValleyPeak(a) << endl;
     return 0;
 }

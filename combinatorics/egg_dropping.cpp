@@ -29,6 +29,7 @@ int C(int n, int k) {
   
 int superEggDrop(int K, int N) {
     // can perform binary search here
+    // to make O(k log n)
     for (int d = 0; ; ++d) {
         int sum = 0;
         for (int i = 1; i <= K; ++i) {

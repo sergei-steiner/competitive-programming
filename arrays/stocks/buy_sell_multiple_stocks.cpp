@@ -44,12 +44,25 @@ int maxProfitValleyPeak(const vector<int>& prices) {
 }
 
 
+int maxProfitSimplest(const vector<int>& prices) {
+    int n = prices.size();
+    if (n == 0) return 0; 
+    int ans = 0;
+    for (int i = 0; i + 1 < n; ++i) {
+        if (prices[i + 1] > prices[i]) {
+            ans += prices[i + 1] - prices[i];
+        }
+    }
+    return ans;
+ }
+
+
 int main() {
     int n;
     cin >> n;
     
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << maxProfit(a) << " " << maxProfitValleyPeak(a) << endl;
+    cout << maxProfit(a) << " " << maxProfitValleyPeak(a) << " " << maxProfitSimplest(a) << endl;
     return 0;
 }

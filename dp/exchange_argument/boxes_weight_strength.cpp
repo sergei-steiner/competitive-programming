@@ -24,7 +24,7 @@ struct Box {
 
 bool canRearrange(const vector<Box>& boxes) {
     int n = boxes.size();
-    sort(boxes.begin(), boxes.end());
+    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight <= y.strength + y.weight; });
     long long totalWeight = 0;
     for (int i = 0; i < n; ++i) {
         if (totalWeight > boxes[i].strength) return false;

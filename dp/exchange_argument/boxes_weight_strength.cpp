@@ -15,15 +15,14 @@ struct Box {
      
     Box(int strength, int weight)
         : strength(strength)
-        , weight(weigth)
+        , weight(weight)
     {
     }
     
     Box() = default;
-    Box(const Box& other) = default;
 };
 
-bool canRearrange(const vector<Box>& boxes) {
+bool canRearrange(vector<Box>& boxes) {
     int n = boxes.size();
     sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight <= y.strength + y.weight; });
     long long totalWeight = 0;
@@ -38,7 +37,7 @@ bool canRearrange(const vector<Box>& boxes) {
 int main() {
     int n;
     cin >> n;
-    vector<Boxes> boxes;
+    vector<Box> boxes;
     for (int i = 0; i < n; ++i) {
         int strength;
         int weight;

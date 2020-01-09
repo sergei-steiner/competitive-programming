@@ -37,12 +37,12 @@ bool canRearrange(const vector<Box>& boxes) {
 int main() {
     int n;
     cin >> n;
-    vector<Boxes> box(n);
+    vector<Boxes> boxes;
     for (int i = 0; i < n; ++i) {
         int strength;
         int weight;
         cin >> strength >> weight;
-        box[i] = Box(strength, weight); 
+        boxes.emplace_back(strength, weight); 
     }
     cout << canRearrange(boxes) << endl;
     return 0;

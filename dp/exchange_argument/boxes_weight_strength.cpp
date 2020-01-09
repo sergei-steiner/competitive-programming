@@ -20,6 +20,7 @@ struct Box {
     }
     
     Box() = default;
+    Box(const Box& other) = default;
 };
 
 bool canRearrange(const vector<Box>& boxes) {

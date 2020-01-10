@@ -31,7 +31,7 @@ https://www.youtube.com/watch?v=7hFWrKa6yRM
 
 bool canRearrange(vector<Box>& boxes) {
     int n = boxes.size();
-    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight <= y.strength + y.weight; });
+    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight < y.strength + y.weight; });
     long long totalWeight = 0;
     for (int i = 0; i < n; ++i) {
         if (totalWeight > boxes[i].strength) return false;
@@ -43,7 +43,7 @@ bool canRearrange(vector<Box>& boxes) {
 // another comparator
 bool canRearrange2(vector<Box>& boxes) {
     int n = boxes.size();
-    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return min(x.strength - y.weight, y.strength) <= min(y.strength - x.weight, x.strength); });
+    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return min(x.strength - y.weight, y.strength) < min(y.strength - x.weight, x.strength); });
     long long totalWeight = 0;
     for (int i = 0; i < n; ++i) {
         if (totalWeight > boxes[i].strength) return false;
@@ -51,7 +51,30 @@ bool canRearrange2(vector<Box>& boxes) {
     }
     return true;
 }
-    
+
+// n log n
+int maxNumber(vector<Box>& boxes) {
+    int n = boxes.size();
+    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight < y.strength + y.weight; });
+    int W = 0; // sum of weights of current tower
+    auto comparator = [](Box x, Box y ) { return x.weight > y.weight; };
+    multiset<int, decltype(comparator)> boxes(comparator);
+    for (Box b : boxes) {
+       if (b.strength >= W) {
+           M += b.weight;
+           boxes.insert(b);
+       } else {
+           int Max = boxes.begin()->weight;
+           if (b.strength >= W - Max && b.weight < Max) {
+               W -= Max;
+               boxes.erase(boxes.begin());
+               W += b.weight;
+               boxes.insert(b);
+           }
+       }
+    }
+    return boxes.size();
+}
     
 int main() {
     int n;
@@ -63,6 +86,6 @@ int main() {
         cin >> strength >> weight;
         boxes.emplace_back(strength, weight); 
     }
-    cout << canRearrange(boxes) << " " << canRearrange2(boxes) << endl;
+    cout << canRearrange(boxes) << " " << canRearrange2(boxes) << " " << maxBoxes(boxes) << endl;
     return 0;
 }

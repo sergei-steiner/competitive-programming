@@ -61,7 +61,7 @@ int maxBoxes(vector<Box>& boxes) {
     multiset<int, decltype(comparator)> currentBoxes(comparator);
     for (Box b : boxes) {
        if (b.strength >= W) {
-           M += b.weight;
+           W += b.weight;
            currentBoxes.insert(b);
        } else {
            int Max = currentBoxes.begin()->weight;

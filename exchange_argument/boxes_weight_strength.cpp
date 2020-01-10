@@ -63,6 +63,6 @@ int main() {
         cin >> strength >> weight;
         boxes.emplace_back(strength, weight); 
     }
-    cout << canRearrange(boxes) << canRearrange2(boxes) << endl;
+    cout << canRearrange(boxes) << " " << canRearrange2(boxes) << endl;
     return 0;
 }

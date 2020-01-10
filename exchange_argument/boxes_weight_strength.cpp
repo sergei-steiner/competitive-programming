@@ -22,6 +22,13 @@ struct Box {
     Box() = default;
 };
 
+
+/*
+Задача про коробки. Нужно построить башню из всех данных коробок. У каждой есть
+масса 𝑚𝑖 и прочность 𝑠𝑖 (какую суммарную массу можно поставить сверху).
+https://www.youtube.com/watch?v=7hFWrKa6yRM
+*/
+
 bool canRearrange(vector<Box>& boxes) {
     int n = boxes.size();
     sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight <= y.strength + y.weight; });

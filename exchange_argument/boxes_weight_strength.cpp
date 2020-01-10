@@ -39,6 +39,18 @@ bool canRearrange(vector<Box>& boxes) {
     }
     return true;
 }
+
+// another comparator
+bool canRearrange2(vector<Box>& boxes) {
+    int n = boxes.size();
+    sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return min(x.strength - y.weight, y.strength) <= min(y.strength - x.weight, x.strength); });
+    long long totalWeight = 0;
+    for (int i = 0; i < n; ++i) {
+        if (totalWeight > boxes[i].strength) return false;
+        totalWeight += boxes[i].weight;
+    }
+    return true;
+}
     
     
 int main() {
@@ -51,6 +63,6 @@ int main() {
         cin >> strength >> weight;
         boxes.emplace_back(strength, weight); 
     }
-    cout << canRearrange(boxes) << endl;
+    cout << canRearrange(boxes) << canRearrange2(boxes) << endl;
     return 0;
 }

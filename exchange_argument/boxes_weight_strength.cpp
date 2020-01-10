@@ -58,22 +58,22 @@ int maxBoxes(vector<Box>& boxes) {
     sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight < y.strength + y.weight; });
     int W = 0; // sum of weights of current tower
     auto comparator = [](Box x, Box y ) { return x.weight > y.weight; };
-    multiset<int, decltype(comparator)> boxes(comparator);
+    multiset<int, decltype(comparator)> currentBoxes(comparator);
     for (Box b : boxes) {
        if (b.strength >= W) {
            M += b.weight;
-           boxes.insert(b);
+           currentBoxes.insert(b);
        } else {
-           int Max = boxes.begin()->weight;
+           int Max = currentBoxes.begin()->weight;
            if (b.strength >= W - Max && b.weight < Max) {
                W -= Max;
-               boxes.erase(boxes.begin());
+               currentBoxes.erase(currentBoxes.begin());
                W += b.weight;
-               boxes.insert(b);
+               currentBoxes.insert(b);
            }
        }
     }
-    return boxes.size();
+    return currentBoxes.size();
 }
     
 int main() {

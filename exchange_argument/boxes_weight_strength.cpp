@@ -53,7 +53,7 @@ bool canRearrange2(vector<Box>& boxes) {
 }
 
 // n log n
-int maxNumber(vector<Box>& boxes) {
+int maxBoxes(vector<Box>& boxes) {
     int n = boxes.size();
     sort(boxes.begin(), boxes.end(), [](Box x, Box y) { return x.strength + x.weight < y.strength + y.weight; });
     int W = 0; // sum of weights of current tower

@@ -22,7 +22,7 @@ vector<vector<pair<int, int>>> round_robin(int n) {
         for (int i = 0; i < rowLen; ++i) {
             round.emplace_back(order[i], order[order.size() - 1 - i]);
         }
-        ans.push_back(order);
+        ans.push_back(round);
         reverse(order.begin() + 2, order.end());
         reverse(order.begin() + 1, order.end());
     }

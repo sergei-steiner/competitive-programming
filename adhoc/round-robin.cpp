@@ -32,8 +32,8 @@ int main() {
     
     int n;
     cin >> n;
-    
-    for (auto&& round : round_robin(n)) {
+  
+    for (const auto& round : round_robin(n)) {
         for (auto [first, second] : round) {
             cout << first << " vs " << second << " ; ";
         }

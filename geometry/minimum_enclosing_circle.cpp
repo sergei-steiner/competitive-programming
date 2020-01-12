@@ -15,7 +15,7 @@
 
 typedef long long int64;
 
-typedef lld lld;
+typedef long double lld;
 
 using namespace std;
 

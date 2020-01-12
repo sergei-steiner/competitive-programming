@@ -1,12 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-#include <vector>
-#include <string>
-#include <math.h>
-#include <algorithm>
-#include <map>
-#include <set>
+#include <bits/stdc++.h>
 
 #define sz(x) ((int)x.size())
 #define all(x) (x).begin(), (x).end()

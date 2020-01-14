@@ -19,7 +19,7 @@ int64 powmod(int64 a, int64 n, int64 p = mod) {
 }
 
 int64 inv(int64 a, int64 p = mod) {
-    return powmod(a, p - 2, p);)
+    return powmod(a, p - 2, p);
 }
 
 int main() {

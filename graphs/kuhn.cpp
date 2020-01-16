@@ -7,6 +7,8 @@
 
 typedef long long int64;
 
+using namespace std;
+
 int n, k;
 vector<vector<int>> g;
 vector<int> mt;

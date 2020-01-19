@@ -10,7 +10,6 @@ typedef long long int64;
 
 using namespace std;
 
-
 // https://leetcode.com/problems/rotate-image/submissions/
 
 void rotate(vector<vector<int>>& a) {

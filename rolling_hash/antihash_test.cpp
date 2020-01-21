@@ -16,6 +16,12 @@ string ThueMorse(int n) {
     }
     return ans;
 }
+
+pair<string, string> antihash_test() {
+    string s = ThueMorse(14);
+    int n = s.size() / 2;
+    return {s.substr(0, n), s.substr(n)};
+}
     
 int main() {
     int n;

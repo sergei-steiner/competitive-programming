@@ -25,7 +25,6 @@ int phi(int n) {
    
 int main() {
   
-  
     int n;
     cin >> n;
     cout << phi(n) << endl;

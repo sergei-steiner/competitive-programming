@@ -17,6 +17,9 @@ string ThueMorse(int n) {
     return ans;
 }
 
+
+// should work for any rolling hash modulo 2^32
+
 pair<string, string> antihash_test() {
     string s = ThueMorse(14);
     int n = s.size() / 2;

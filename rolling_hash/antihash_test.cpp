@@ -10,9 +10,9 @@ typedef long long int64;
 using namespace std;
     
 string ThueMorse(int n) {
-    string ans(n, 'a');
+    string ans((1 << n), 'A');
     for (int i = 0; i < (1 << n); ++i) {
-        ans[i] = __builtin_popcount(i) % 2 + 'a';
+        ans[i] = __builtin_popcount(i) % 2 + 'A';
     }
     return ans;
 }

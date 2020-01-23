@@ -39,7 +39,8 @@ unsigned int _hash(const string& s, int p = 31) {
     
 int main() {
     auto [first, second] = antihash_test();
-    cout << "hash( " << first << " ) = " << _hash(first) << endl;
-    cout << "hash( " << second << " ) = " << _hash(second) << endl;
+    cout << "hash( first ) = " << _hash(first) << endl;
+    cout << "hash( second ) = " << _hash(second) << endl;
+    cout << "first == second is " << boolalpha << first == second << endl;
     return 0;
 }

@@ -18,7 +18,9 @@ string ThueMorse(int n) {
 }
 
 
-// should work for any rolling hash modulo 2^32
+// should work for any rolling hash modulo 2^32 or 2^64
+
+// https://codeforces.com/blog/entry/4898
 
 pair<string, string> antihash_test() {
     string s = ThueMorse(14);
@@ -35,6 +37,13 @@ unsigned long long _hash(const string& s, int p = 31) {
         deg *= p;
     }
     return ans;
+}
+
+pair<string, string> resilient_antihash_test(int prefix = 1000, int suffix = 1000) {
+    auto [first, second] = antihash_test();
+	first = string(prefix, 'a')  + first  + string(suffix, 'a');
+	second = string(prefix, 'a') + second + string(suffix, 'a');
+	return {first, second};
 }
 	
 int main() {

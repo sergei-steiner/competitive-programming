@@ -12,7 +12,7 @@ using namespace std;
 string ThueMorse(int n) {
     string ans((1 << n), 'A');
     for (int i = 0; i < (1 << n); ++i) {
-        ans[i] = __builtin_popcount(i) % 2 + 'A';
+        ans[i] = __builtin_popcount(i) % 2 + 'a';
     }
     return ans;
 }
@@ -25,12 +25,21 @@ pair<string, string> antihash_test() {
     int n = s.size() / 2;
     return {s.substr(0, n), s.substr(n)};
 }
+
+unsigned int hash(const string& s, int p = 31) {
+    int n = s.size();
+    unsigned int ans = 0;
+    unsigned int deg = 1;
+    for (int i = 0; i < n; ++i) {
+        ans += (s[i] - 'a' + 1) * deg;
+        deg *= p;
+    }
+    return ans;
+}
     
 int main() {
-    int n;
-    cin >> n;
-    cout << ThueMorse(n) << endl;
-    
-
+    auto [first, second] = antihash_test();
+    cout << "hash( " << first << " ) = " << hash(first) << endl;
+    cout << "hash( " << second << " ) = " << hash(second) << endl;
     return 0;
 }

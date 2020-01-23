@@ -26,21 +26,21 @@ pair<string, string> antihash_test() {
     return {s.substr(0, n), s.substr(n)};
 }
 
-unsigned int _hash(const string& s, int p = 31) {
+unsigned long long _hash(const string& s, int p = 31) {
     int n = s.size();
-    unsigned int ans = 0;
-    unsigned int deg = 1;
+    unsigned long long ans = 0;
+    unsigned long long deg = 1;
     for (int i = 0; i < n; ++i) {
         ans += (s[i] - 'a' + 1) * deg;
         deg *= p;
     }
     return ans;
 }
-    
+	
 int main() {
     auto [first, second] = antihash_test();
     cout << "hash( first ) = " << _hash(first) << endl;
     cout << "hash( second ) = " << _hash(second) << endl;
-    cout << "first == second is " << boolalpha << first == second << endl;
+    cout << "first == second is " << boolalpha << ( first == second ) << endl;
     return 0;
 }

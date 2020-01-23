@@ -26,7 +26,7 @@ pair<string, string> antihash_test() {
     return {s.substr(0, n), s.substr(n)};
 }
 
-unsigned int hash(const string& s, int p = 31) {
+unsigned int _hash(const string& s, int p = 31) {
     int n = s.size();
     unsigned int ans = 0;
     unsigned int deg = 1;
@@ -39,7 +39,7 @@ unsigned int hash(const string& s, int p = 31) {
     
 int main() {
     auto [first, second] = antihash_test();
-    cout << "hash( " << first << " ) = " << hash(first) << endl;
-    cout << "hash( " << second << " ) = " << hash(second) << endl;
+    cout << "hash( " << first << " ) = " << _hash(first) << endl;
+    cout << "hash( " << second << " ) = " << _hash(second) << endl;
     return 0;
 }

@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// https://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling_algorithm
+
 vector<vector<pair<int, int>>> round_robin(int n) {
     int rowLen = (n + 1) / 2;
     vector<int> order;

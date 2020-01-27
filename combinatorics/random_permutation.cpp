@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
     
-vector<int> random_permutation(n) {
+vector<int> random_permutation(int n) {
     vector<int> p(n, 0);
     for (int i = 0; i < n; ++i) {
         p[i] = i;
@@ -25,6 +25,13 @@ int main()
 
     int n;
     cin >> n;
+
+    for (int x : random_permatation(n)) {
+        cout << x + 1 << " ";
+    }
+    
+
+    cout << endl;
 
     return 0;
 }

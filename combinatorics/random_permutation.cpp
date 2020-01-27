@@ -16,7 +16,7 @@ vector<int> random_permutation(int n) {
     }
     for (int i = 0; i < n; ++i) {
         int j = rand() % (i + 1);
-        swap(p[i], p[j])
+        swap(p[i], p[j]);
     }
     return p;
 }

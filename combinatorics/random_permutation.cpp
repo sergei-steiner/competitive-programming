@@ -26,7 +26,7 @@ int main() {
     int n;
     cin >> n;
 
-    for (int x : random_permatation(n)) {
+    for (int x : random_permutation(n)) {
         cout << x + 1 << " ";
     }
     

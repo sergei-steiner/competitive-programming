@@ -21,7 +21,7 @@ vector<int> random_permutation(int n) {
     return p;
 }
     
-int main() 
+int main() {
 
     int n;
     cin >> n;

@@ -18,14 +18,14 @@ vector<int> PermutationByNumber(int n, int k) {
         int cnt = k / f[n - i - 1];
         for (int j = 0; j < n; ++j) {
             if (used[j]) continue;
-            --cnt;
             if (cnt == 0) {
-                ans.push_back(j + 1);
+                ans.push_back(j);
                 used[j] = true;
                 break;
             }
+			--cnt;
         }
-        k %= f[n - i - 1];
+		k %= f[n - i - 1];
     }
     return ans;
 }

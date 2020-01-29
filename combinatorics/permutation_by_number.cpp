@@ -10,12 +10,13 @@ typedef long long int64;
 using namespace std;
     
 vector<int> PermutationByNumber(int n, int k) {
+    --k;
     vector<int> f(n, 1);
     for (int i = 2; i <  n; ++i) f[i] = f[i - 1] * i;
     vector<int> ans;
     vector<int> used(n, false);
     for (int i = 0; i < n; ++i) {
-        int cnt = (k - 1) / f[n - i - 1];
+        int cnt = k / f[n - i - 1];
         for (int j = 0; j < n; ++j) {
             if (used[j]) continue;
             --cnt;
@@ -25,6 +26,7 @@ vector<int> PermutationByNumber(int n, int k) {
                 break;
             }
         }
+        k %= f[n - i - 1];
     }
     return ans;
 }

@@ -58,6 +58,7 @@ int main() {
     for (int x : p) {
         cout << x << " ";
     }
+    cout << endl;
     cout << NumberOfPermutation(p) << endl;
     return 0;
 }

@@ -23,9 +23,9 @@ vector<int> PermutationByNumber(int n, int k) {
                 used[j] = true;
                 break;
             }
-			--cnt;
+	    --cnt;
         }
-		k %= f[n - i - 1];
+	k %= f[n - i - 1];
     }
     return ans;
 }

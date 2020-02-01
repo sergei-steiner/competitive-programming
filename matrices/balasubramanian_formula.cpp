@@ -19,7 +19,7 @@ int per(const vector<vector<int>>& a) {
         for (int i = 0; i < n; ++i) {
             int sum = 0;
             for (int j = 0; j < n; ++j) {
-               if ((k >> 1) & (1 << j)) {
+               if ((k << 1) & (1 << j)) {
                   sum += a[i][j];
                } else {
                   sum -= a[i][j];
@@ -31,7 +31,6 @@ int per(const vector<vector<int>>& a) {
         if (cnt % 2 == 1) mul *= -1;
         result += mul;
     }
-    if (n % 2 == 1) result *= -1;
     result >>= (n - 1);
     return result;
 }

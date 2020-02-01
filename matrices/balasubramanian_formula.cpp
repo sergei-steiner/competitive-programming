@@ -20,9 +20,9 @@ int per(const vector<vector<int>>& a) {
             int sum = 0;
             for (int j = 0; j < n; ++j) {
                if ((k << 1) & (1 << j)) {
-                  sum += a[i][j];
-               } else {
                   sum -= a[i][j];
+               } else {
+                  sum += a[i][j];
                }
             }
             mul *= sum;

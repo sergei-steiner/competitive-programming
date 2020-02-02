@@ -41,21 +41,17 @@ int singleNumberII(vector<int>& a) {
 vector<int> singleNumberIII(vector<int>& a) {
     int xor_sum = 0;
     for (int x : a) xor_sum ^= x;
-    for (int j = 0; j < N; ++j) {
-        if (xor_sum & (1 << j)) {
-            int ans1 = 0;
-            int ans2 = 0;
-            for (int x : a) {
-                if (x & (1 << j)) {
-                    ans1 ^= x;
-                } else {
-                    ans2 ^= x;
-                }
-            }
-            return {ans1, ans2};
+    int set_bit = (xor_sum) & ~(xor_sum - 1);
+    int ans1 = 0;
+    int ans2 = 0;
+    for (int x : a) {
+        if (x &  set_bit) {
+            ans1 ^= x;
+        } else {
+            ans2 ^= x;
         }
-    }
-    return {0, 0};
+     }
+     return {ans1, ans2};
 }
   
 int main() {

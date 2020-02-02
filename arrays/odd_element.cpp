@@ -11,6 +11,14 @@ using namespace std;
 
 constexpr int N = 32;
 
+// https://leetcode.com/problems/single-number
+
+vector<int> singleNumber(vector<int>& a) {
+    int xor_sum = 0;
+    for (int x : a) xor_sum ^= x;
+    return xor_sum;
+}
+
 // https://leetcode.com/problems/single-number-ii/
 
 int singleNumberII(vector<int>& a) {
@@ -30,7 +38,7 @@ int singleNumberII(vector<int>& a) {
 
 // https://leetcode.com/problems/single-number-iii
 
-vector<int> singleNumber(vector<int>& a) {
+vector<int> singleNumberIII(vector<int>& a) {
     int xor_sum = 0;
     for (int x : a) xor_sum ^= x;
     for (int j = 0; j < N; ++j) {

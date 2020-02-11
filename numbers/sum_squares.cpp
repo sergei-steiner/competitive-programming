@@ -9,6 +9,11 @@ typedef long long int64;
 
 using namespace std;
 
+bool one_square(int n) {
+    int root = round(sqrt(n));
+    return n == root * root;
+}
+
 // https://en.wikipedia.org/wiki/Fermat%27s_theorem_on_sums_of_two_squares
 bool two_squares(int n) {
     for (int i = 2; i * i <= n; ++i) {
@@ -33,8 +38,21 @@ bool three_squares(int n) {
     return n % 8 < 7;
 }
 
+// https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
+
+bool (int n) {
+    if (one_square(n)) return 1;
+    if (two_squares(n)) return 2;
+    if (three_squares(n)) return 3;
+    return 4;
+}
+
     
 int main() {
+    
+    int n;
+    cin >> n;
+    cout << min_sum_of_squares(n) << endl;
 
     return 0;
 }

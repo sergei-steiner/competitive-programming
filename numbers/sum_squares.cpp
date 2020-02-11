@@ -40,7 +40,7 @@ bool three_squares(int n) {
 
 // https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
 
-bool (int n) {
+bool min_sum_of_squares(int n) {
     if (one_square(n)) return 1;
     if (two_squares(n)) return 2;
     if (three_squares(n)) return 3;

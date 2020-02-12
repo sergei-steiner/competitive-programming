@@ -64,7 +64,7 @@ long long representations_num(long long n) {
            if (!odd || i != 2) ans *= (deg - 1) / (i - 1);
         }
     }
-    if (n > 1 && (!odd || i != 2)) ans *= (n + 1);
+    if (n > 1) ans *= (n + 1);
     return ans;
 }
 

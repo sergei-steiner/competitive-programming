@@ -48,6 +48,8 @@ int min_sum_of_squares(int n) {
 }
 
 
+// there is randomized polynomial-time algorithms for computing a single representation in expected running time log^2 (n)
+// https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem#Algorithms
 
 // https://en.wikipedia.org/wiki/Jacobi%27s_four-square_theorem
 long long representations_num(long long n) {

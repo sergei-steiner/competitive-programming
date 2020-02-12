@@ -51,8 +51,9 @@ int min_sum_of_squares(int n) {
 
 // https://en.wikipedia.org/wiki/Jacobi%27s_four-square_theorem
 long long representations_num(long long n) {
+    bool odd = n % 2 == 1;
     long long ans = 8;
-    if (n % 2 == 0) ans = 24;
+    if (odd) ans = 24;
     for (long long i = 2; i * i <= n; ++i) {
         if (n % i == 0) {
            int deg = i;
@@ -60,10 +61,10 @@ long long representations_num(long long n) {
                n /= i;
                deg *= i;
            }
-           ans *= (deg - 1) / (i - 1);
+           if (!odd || i != 2) ans *= (deg - 1) / (i - 1);
         }
     }
-    if (n > 1) ans *= (n + 1);
+    if (n > 1 && (!odd || i != 2)) ans *= (n + 1);
     return ans;
 }
 

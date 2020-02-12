@@ -47,12 +47,33 @@ int min_sum_of_squares(int n) {
     return 4;
 }
 
+
+
+// https://en.wikipedia.org/wiki/Jacobi%27s_four-square_theorem
+long long representations_num(long long n) {
+    long long ans = 8;
+    if (n % 2 == 0) ans = 24;
+    for (long long i = 2; i * i <= n; ++i) {
+        if (n % i == 0) {
+           int deg = i;
+           while (n % i == 0) {
+               n /= i;
+               deg *= i;
+           }
+           ans *= (deg - 1) / (i - 1);
+        }
+    }
+    if (n > 1) ans *= (n + 1);
+    return ans;
+}
+
     
 int main() {
     
     int n;
     cin >> n;
     cout << min_sum_of_squares(n) << endl;
+    cout << representations_num(n) << endl;
 
     return 0;
 }

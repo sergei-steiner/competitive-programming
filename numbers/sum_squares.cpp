@@ -70,7 +70,23 @@ long long representations_num(long long n) {
     return ans;
 }
 
-    
+// https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem#Uniqueness
+
+unordered_set<int> uniq_representation_small = {1, 3, 5, 7, 11, 15, 23};
+
+bool uniq_representation(long long n) {
+    if (uniq_representation_small.count(n) == 1) return true;
+    while (n % 4 == 0) n /= 4;
+    return n == 2 || n == 6 || n == 14;
+}
+unordered_set<int> four_nonzero_small = {1, 3, 5, 9, 11, 17, 29, 41};
+
+bool four_nonzero_representation(long long n) {
+    if (four_nonzero_small.count(n) == 1) return false;
+    while (n % 4 == 0) n /= 4;
+    return n != 2 && n != 6 && n != 14;
+}
+
 int main() {
     
     int n;

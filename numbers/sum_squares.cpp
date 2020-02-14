@@ -100,7 +100,7 @@ long long divisors_4n_plus_1(int n) {
                ++cnt;
            }
            if (i % 4 == 1) {
-               mul *= (cnt + 1);
+               ans *= (cnt + 1);
            } else {
                d.push_back(cnt + 1);
            }
@@ -108,13 +108,13 @@ long long divisors_4n_plus_1(int n) {
     }
     if (n > 1) {
         if (n % 4 == 1) {
-            mul *= 2;
+            ans *= 2;
         } else {
             d.push_back(2);
         }
     }
     int m = d.size();
-    if (m == 0) return mul;
+    if (m == 0) return ans;
     vector<int> d0(m, 0);
     vector<int> d1(m, 0);
     
@@ -126,7 +126,7 @@ long long divisors_4n_plus_1(int n) {
         d1[i] += d0[i - 1] * (d[i] - d[i] / 2) + d1[i - 1] * (d[i] / 2);
     }
     
-    return mul * d0[m - 1];
+    return ans * d0[m - 1];
 }
 
 int main() {

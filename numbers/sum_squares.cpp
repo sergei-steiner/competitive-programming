@@ -87,6 +87,48 @@ bool four_nonzero_representation(long long n) {
     return n != 2 && n != 6 && n != 14;
 }
 
+long long divisors_4n_plus_1(int n) {
+    while (n % 2 == 0) n /= 2;
+    
+    long long ans = 1;
+    vector<int> d;
+    for (int i = 2; i * i <= n; ++i) {
+       if (n % i == 0) {
+           int cnt = 0;
+           while (n % i == 0) {
+               n /= i;
+               ++cnt;
+           }
+           if (i % 4 == 1) {
+               mul *= (cnt + 1);
+           } else {
+               d.push_back(cnt + 1);
+           }
+       }
+    }
+    if (n > 1) {
+        if (n % 4 == 1) {
+            mul *= 2;
+        } else {
+            d.push_back(2);
+        }
+    }
+    int m = d.size();
+    if (m == 0) return mul;
+    vector<int> d0(m, 0);
+    vector<int> d1(m, 0);
+    
+    d0[0] = d[0] / 2;
+    d1[0] = d[0] - d[0] / 2;
+    
+    for (int i = 1; i < m; ++i) {
+        d0[i] += d0[i - 1] * (d[i] / 2) + d1[i - 1] * (d[i] - d[i] / 2);
+        d1[i] += d0[i - 1] * (d[i] - d[i] / 2) + d1[i - 1] * (d[i] / 2);
+    }
+    
+    return mul * d0[m - 1];
+}
+
 int main() {
     
     int n;

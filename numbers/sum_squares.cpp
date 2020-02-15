@@ -139,11 +139,11 @@ long long divisors_4n_plus_3(int n) {
     return divisors_4n_plus_k(n, 3);
 }
 
+// https://mathoverflow.net/questions/242820/jacobis-theorem-on-sums-of-two-squares-reference-request
+
 long long num_of_two_squares_representations(int n) {
     return 4 * (divisors_4n_plus_1(n) - divisors_4n_plus_3(n));
 }
-
-
 
 int main() {
     
@@ -151,6 +151,7 @@ int main() {
     cin >> n;
     cout << min_sum_of_squares(n) << endl;
     cout << representations_num(n) << endl;
+    cout << num_of_two_squares_representations(n) << endl;
 
     return 0;
 }

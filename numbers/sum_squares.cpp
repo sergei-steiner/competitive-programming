@@ -87,7 +87,7 @@ bool four_nonzero_representation(long long n) {
     return n != 2 && n != 6 && n != 14;
 }
 
-long long divisors_4n_plus_1(int n) {
+long long divisors_4n_plus_k(int n, int k) {
     while (n % 2 == 0) n /= 2;
     
     long long ans = 1;
@@ -114,7 +114,9 @@ long long divisors_4n_plus_1(int n) {
         }
     }
     int m = d.size();
-    if (m == 0) return ans;
+    if (m == 0) {
+        return ans * (k == 1);
+    }
     vector<int> d0(m, 0);
     vector<int> d1(m, 0);
     
@@ -126,8 +128,22 @@ long long divisors_4n_plus_1(int n) {
         d1[i] += d0[i - 1] * (d[i] - d[i] / 2) + d1[i - 1] * (d[i] / 2);
     }
     
-    return ans * d0[m - 1];
+    return ans * (k == 1 ? d0[m - 1] : d1[m - 1]);
 }
+
+long long divisors_4n_plus_1(int n) {
+    return divisors_4n_plus_k(n, 1);
+}
+
+long long divisors_4n_plus_3(int n) {
+    return divisors_4n_plus_k(n, 3);
+}
+
+long long num_of_two_squares_representations(int n) {
+    return 4 * (divisors_4n_plus_1(n) - divisors_4n_plus_3(n));
+}
+
+
 
 int main() {
     

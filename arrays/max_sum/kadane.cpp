@@ -43,6 +43,40 @@ pair<size_t, size_t> MaxSumRange(const vector<int>& a) {
     return {ansLeft, ansRight};
 }
 
+int maxSumSubmatrix(const vector<vector<int>>& a) {
+    int n = a.size();
+    int m = a[0].size();
+    if (n > m) {
+        vector<vector<int>> b(m, vector<int>(n, 0));
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                b[j][i] = a[i][j];
+            }
+        }
+        swap(a, b);
+        swap(n, m);
+    }
+    vector<vector<long long>> p(n, vector<long long>(m, 0));
+    for (int i = 0; i < n; ++i) {
+       for (int j = 0; j < m; ++j) {
+           p[i][j] = a[i][j];
+           if (i > 0) p[i][j] += p[i - 1][j];
+       }
+    }
+    long long ans = numeric_limits<long long>::min();
+    for (int i1 = 0; i1 < n; ++i1) {
+        for (int i2 = i1; i2 < n; ++i2) {
+           vector<long long> sums;
+           for (int j = 0; j < m; ++j) {
+                sums.push_back(p[i2][j]);
+                if (i1 > 0) sums.back() -= p[i1 - 1][j];
+           }
+           ans = max(ans, MaxSum(sums, k));
+        }
+    }
+    return ans;
+}
+
 
 // https://leetcode.com/problems/maximum-sum-circular-subarray
 

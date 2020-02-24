@@ -9,24 +9,25 @@ typedef long long int64;
 
 using namespace std;
 
-long long MaxSum(const vector<int>& a, int minLen) {
-    long long ans = a[0];
+double MaxSum(const vector<double>& a, int minLen) {
+    double ans = a[0];
     int n = a.size();
-    vector<long long> prefixSums(n, 0);
+    vector<double> prefixSums(n, 0);
     prefixSums[0] = a[0];
     for (int i = 1; i < n; ++i) {
         prefixSums[i] = a[i] + prefixSums[i - 1];
     }
-    vector<long long> minPrefixSums(n, 0);
+    vector<double> minPrefixSums(n, 0);
     minPrefixSums[0] = prefixSums[0];
-    for (size_t i = 1; i < n; ++i) {
+    for (int i = 1; i < n; ++i) {
         minPrefixSums[i] = min(prefixSums[i], minPrefixSums[i - 1]);
     }
     for (int i = minLen - 1; i < n; ++i) {
-        long long result = prefixSums[i];
+        double result = prefixSums[i];
         if (i - minLen > 0) result -= minPrefixSums[i - minLen - 1];
         ans = max(ans, result);
     }
+    
     return ans;
 }
 

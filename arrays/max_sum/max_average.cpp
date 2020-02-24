@@ -32,12 +32,12 @@ long long MaxSum(const vector<int>& a, int minLen) {
 
 
 double MaxAverage(const vector<int>& a, int minLen, int iterations = 100) {
-    double minVal = *min_element(a.begin(), a.end());
-    double maxVal = *max_element(a.begin(), a.end());
+    double left = *min_element(a.begin(), a.end());
+    double right = *max_element(a.begin(), a.end());
     for (int iteration = 0; iteration < iterations; ++iteration) {
         double middle = (minVal + maxVal) / 2;
         vector<double> b;
-        for (inx item : a) {
+        for (int item : a) {
             b.push_back(item - middle);
             if (MaxSum(b, minLen) > 0) {
                 left = middle;

@@ -36,7 +36,7 @@ double MaxAverage(const vector<int>& a, int minLen, int iterations = 100) {
     double left = *min_element(a.begin(), a.end());
     double right = *max_element(a.begin(), a.end());
     for (int iteration = 0; iteration < iterations; ++iteration) {
-        double middle = (minVal + maxVal) / 2;
+        double middle = 0.5 * (left + right);
         vector<double> b;
         for (int item : a) {
             b.push_back(item - middle);

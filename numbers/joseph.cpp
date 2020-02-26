@@ -13,7 +13,7 @@ using namespace std;
 // k = 2
 // https://e-maxx.ru/algo/joseph_problem
 int joseph2(int n) {
-    int deg = 2;;
+    int deg = 1;
     while (deg * 2 <= n) {
         deg *= 2;
     }        

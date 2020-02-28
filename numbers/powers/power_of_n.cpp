@@ -27,6 +27,7 @@ bool isPowerOfThree(int n) {
 
 bool isPowerOfFour(int n) {
     return isPowerOfTwo(n) && n % 3 == 1;
+    // return isPowerOfTwo(n) && (n & 0x55555555) == n;
 }
 
 

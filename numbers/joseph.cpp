@@ -9,9 +9,16 @@ typedef long long int64;
 
 using namespace std;
 
+// https://e-maxx.ru/algo/joseph_problem
+O(n)
+int joseph (int n, int k) {
+	int res = 0;
+	for (int i = 1; i <= n; ++i)
+		res = (res + k) % i;
+	return res + 1;
+}
 
 // k = 2
-// https://e-maxx.ru/algo/joseph_problem
 int joseph2(int n) {
     int deg = 1;
     while (deg * 2 <= n) {

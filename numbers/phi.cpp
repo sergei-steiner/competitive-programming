@@ -16,8 +16,8 @@ int phi(int n) {
             while (n % i == 0) {
                 n /= i;
             }
+            result -= result / i;
         }
-        result -= result / i;
     }
     if (n > 1) result -= result / n;
     return result;

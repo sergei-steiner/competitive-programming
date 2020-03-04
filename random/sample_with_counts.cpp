@@ -9,10 +9,15 @@ typedef long long int64;
 
 using namespace std;
 
+double random() {
+    int inf = 100000;
+    return 1.0 * (random() % inf + 1) / inf;
+}
+
 vector<string> sample(const vector<pair<string, int>>& cnt, int samples) {
     vector<pair<double, string>> a;
     for (auto& [k, v] : cnt) {
-        a.emplace_back(log(random(0, 1)) * v, k);
+        a.emplace_back(log(random()) * v, k);
     }
     sort(begin(a), end(a));
     reverse(begin(a), end(a));

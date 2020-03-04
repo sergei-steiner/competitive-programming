@@ -10,7 +10,7 @@ typedef long long int64;
 using namespace std;
 
 vector<string> sample(const vector<pair<string, string>>& cnt, int samples) {
-    vector<pair<string, double>> a;
+    vector<pair<double, string>> a;
     for (auto& [k, v] : cnt) {
         a.emplace_back(log(random(0, 1)) * v, k);
     }
@@ -22,7 +22,7 @@ vector<string> sample(const vector<pair<string, string>>& cnt, int samples) {
     }
     return ans;
 }
-    
+
 int main() {
 
     return 0;

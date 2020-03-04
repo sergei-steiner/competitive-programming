@@ -17,7 +17,7 @@ vector<string> sample(const vector<pair<string, string>>& cnt, int samples) {
     sort(begin(a), end(a));
     reverse(begin(a), end(a));
     vector<string> ans;
-    for (int i = 0; i < min(n, a.size()); ++i) {
+    for (int i = 0; i < min(samples, a.size()); ++i) {
          ans.push_back(a[i].second);
     }
     return ans;

@@ -10,9 +10,21 @@ typedef long long int64;
 using namespace std;
 
 
+// https://leetcode.com/problems/longest-uncommon-subsequence-i
+
+class Solution1 {
+public:
+    int findLUSlength(string a, string b) {
+        if (a.size() == b.size()) {
+            if (a == b) return -1;
+        }
+        return max(a.size(), b.size());
+    }
+};
+
 // https://leetcode.com/problems/longest-uncommon-subsequence-ii
 
-class Solution {
+class Solution2 {
 public:
     bool subsequence(const string& s, const string& t) {
         int n = s.size();

@@ -1,3 +1,13 @@
+include <bits/stdc++.h>
+
+#define sz(x) ((int)x.size())
+#define all(x) (x).begin(), (x).end()
+#define pb(x) push_back(x)
+#define mp(x, y) make_pair(x, y)
+
+typedef long long int64;
+
+using namespace std;
 
 int findKthSmallest(vector<int>& a, int k, int l = 0, int r = numeric_limits<int>::max()) {
     int n = a.size();
@@ -19,4 +29,10 @@ int findKthSmallest(vector<int>& a, int k, int l = 0, int r = numeric_limits<int
     if (j - l >= k) return findKthSmallest(a, k, l, j);
     if (i - l <= k) return findKthSmallest(a, k - (i - l), i, r);
     return x;
+}
+
+   
+int main() {
+
+    return 0;
 }

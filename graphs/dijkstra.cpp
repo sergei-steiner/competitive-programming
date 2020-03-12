@@ -32,7 +32,7 @@ vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {
 }
 
 vector<int> dijkstra_heap(int s, const vector<vector<pair<int, int>>>& g) {
-    int n = sz(g);
+    int n = g.size();
     vector<int> d(n, inf);
     d[s] = 0;
     priority_queue<pair<int, int>> q;
@@ -51,7 +51,6 @@ vector<int> dijkstra_heap(int s, const vector<vector<pair<int, int>>>& g) {
     }
     return d;
 }
-
 
 int main() {
 

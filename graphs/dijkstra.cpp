@@ -31,6 +31,27 @@ vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {
     return d;
 }
 
+vector<int> dijkstra_heap(int s, const vector<vector<pair<int, int>>>& g) {
+    int n = sz(g);
+    vector<int> d(n, inf);
+    d[s] = 0;
+    priority_queue<pair<int, int>> q;
+    q.push(mp(-d[s], s));
+    while (!q.empty()) {
+        int v = q.top().second;
+        int cur_d = -q.top().first;
+        q.pop();
+        if (cur_d > d[v]) continue;
+        for (auto [to, len] : g[v]) {
+            if (d[v] + len < d[to]) {
+                d[to] = d[v] + len;
+                q.push(mp(-d[to], to));
+            }
+        }
+    }
+    return d;
+}
+
 
 int main() {
 

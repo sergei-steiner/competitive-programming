@@ -18,7 +18,7 @@ int lcm(int a, int b) {
     return a / gcd(a, b) * b;
 }
 
-int gcd (int a, int b, int& x, int& y) {
+int gcd(int a, int b, int& x, int& y) {
     if (a == 0) {
        x = 0;
        y = 1;
@@ -30,9 +30,6 @@ int gcd (int a, int b, int& x, int& y) {
     y = x1;
     return d;
 }
-
-
-
 
 int main() {
     int a;

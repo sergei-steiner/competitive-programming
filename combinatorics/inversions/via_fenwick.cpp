@@ -15,7 +15,7 @@ struct Fenwick {
 
     Fenwick(int n)
         : n(n)
-        , t.assign(n, 0)
+        , t(n, 0)
     {
     }
 
@@ -46,13 +46,13 @@ long long inv_count(const vector<int>& p) {
      Fenwick t(n);
      for (int i = 0; i < n; ++i) {
          ans += t.sum(p[i] + 1, n - 1);
-         t.inc(p[i]);
+         t.inc(p[i], 1);
      }
      return ans;
 }
 
 int main() {
-    vector<int> p = {5, 4, 3, 1, 2}
+    vector<int> p = {5, 4, 3, 1, 2};
     cout << inv_count(p) << endl;
 
     return 0;

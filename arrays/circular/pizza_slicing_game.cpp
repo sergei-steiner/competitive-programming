@@ -11,6 +11,7 @@ using namespace std;
 
 
 // https://leetcode.com/problems/pizza-with-3n-slices
+// https://www.quora.com/Given-a-pizza-with-3n-slices-e-g-9-12-repeatedly-pick-a-slice-save-the-size-of-this-slice-When-you-do-this-the-slice-on-the-left-goes-to-someone-on-the-left-and-the-slice-on-the-right-goes-to-someone-on-the-right-Repeat-this-process-until-no-slices-are-left-How-can-you-write-a-program-to-find-a-list
 
 class Solution {
 public:

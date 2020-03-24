@@ -11,7 +11,6 @@ using namespace std;
 
 int inf = 1000000000;
 
-
 vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {
     int n = g.size();
     vector<int> d(n, inf);
@@ -50,32 +49,37 @@ vector<int> bellman_ford(int s, int n, const vector<edge>& e) {
    return d;
 }
 
-vector<vector<int>> johnson(vector<vectorpair<int, int>>> g) {
-    int n = sz(g);
+vector<vector<int>> johnson(vector<vector<pair<int, int>>> g) {
+    int n = g.size();
     vector<edge> e;
-    for (int i = 0; i < sz(g); ++i)
-        for (int j = 0; j < sz(g[i]); ++j) {
+    for (int i = 0; i < g.size(); ++i) {
+        for (int j = 0; j < g[i].size(); ++j) {
             edge x;
             x.a = i;
             x.b = g[i][j].first;
             x.cost = g[i][j].second;
-            e.pb(x);
+            e.push_back(x);
         }
+    }
     for (int i = 0; i < n; ++i) {
         edge x;
         x.a = n;
         x.b = i;
         x.cost = 0;
-        e.pb(x);
+        e.push_back(x);
     }
     vector<int> phi = bellman_ford(n, n + 1, e);
-    for (int i = 0; i < sz(g); ++i)
-        for (int j = 0; j < sz(g[i]); ++j)
+    for (int i = 0; i < g[i]; ++i) {
+        for (int j = 0; j < g[i].size(); ++j) {
             g[i][j].second += phi[i] - phi[g[i][j].first];
-    vector<vector<int> > d(n);
+	}
+    }
+    vector<vector<int>> d(n);
     for (int i = 0; i < n; ++i) {
         d[i] = dijkstra_set(i, g);
-        for (int j = 0; j < n; ++j) d[i][j] += phi[j] - phi[i];
+        for (int j = 0; j < n; ++j) {
+	    d[i][j] += phi[j] - phi[i];
+	}
     }
     return d; 
 }

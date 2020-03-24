@@ -12,22 +12,20 @@ using namespace std;
 int inf = 1000000000;
 
 
-vector<int> dijkstra_set(int s, const vector < vector < pair<int, int> > >& g) {
-	int n = sz(g);
+vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {
+    int n = g.size();
     vector<int> d(n, inf);
-	d[s] = 0;
-	set< pair<int, int> > q;
-	q.insert(mp(d[s], s));
-	while (!q.empty()) {
-	    int v = q.begin()->second;
-		q.erase(q.begin());
-		for (int j = 0; j < sz(g[v]); ++j) {
-			int to = g[v][j].first;
-			int len = g[v][j].second;
-			if (d[v] + len < d[to]) {
-				q.erase(mp(d[to], to));
-				d[to] = d[v] + len;
-				q.insert(mp(d[to], to));
+    d[s] = 0;
+    set<pair<int, int>> q;
+    q.insert({d[s], s});
+    while (!q.empty()) {
+        int v = q.begin()->second;
+        q.erase(q.begin());
+        for (auto [to, len] : g[v]) {
+            if (d[v] + len < d[to]) {
+                q.erase({d[to], to});
+                d[to] = d[v] + len;
+                q.insert({d[to], to});
             }
         }
     }
@@ -39,17 +37,20 @@ struct edge {
 };
 
 vector<int> bellman_ford(int s, int n, const vector<edge>& e) {
-	vector<int> d(n, inf);
-	int m = sz(e);
-	d[s] = 0;
-	for (int i = 0; i < n - 1; ++i)
-		for (int j = 0; j < m; ++j)
-			if (d[e[j].a] < inf)
-				d[e[j].b] = min(d[e[j].b], d[e[j].a] + e[j].cost);
-	return d;
+   vector<int> d(n, inf);
+   int m = e.size();
+   d[s] = 0;
+   for (int i = 0; i < n - 1; ++i) {
+      for (int j = 0; j < m; ++j) {
+         if (d[e[j].a] < inf) {
+            d[e[j].b] = min(d[e[j].b], d[e[j].a] + e[j].cost);
+	 }
+      }
+   }
+   return d;
 }
 
-vector<vector<int> > johnson(vector<vector< pair<int, int> > > g) {
+vector<vector<int>> johnson(vector<vectorpair<int, int>>> g) {
     int n = sz(g);
     vector<edge> e;
     for (int i = 0; i < sz(g); ++i)

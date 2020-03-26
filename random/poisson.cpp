@@ -27,6 +27,10 @@ int poisson(double lambda) {
 }
     
 int main() {
+    double lambda;
+    cin >> lambda;
+    
+    cout << poisson(lambda) << endl;
 
     return 0;
 }

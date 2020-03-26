@@ -16,6 +16,7 @@ double uniform() {
 }
 
 int poisson(double lambda) {
+    srand(time(0));
     double L = exp(-lambda);
     double p = 1;
     int k = 0;

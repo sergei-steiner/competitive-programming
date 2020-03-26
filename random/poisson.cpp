@@ -21,7 +21,7 @@ int poisson(double lambda) {
     int k = 0;
     do {
         ++k;
-        p *= uniform01();
+        p *= uniform();
     } while (p > L);
     return k - 1;
 }

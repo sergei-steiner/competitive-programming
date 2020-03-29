@@ -34,7 +34,7 @@ Matrix powmod(const Matrix& a, int n) {
     }
     if (n % 2 == 1) return mulmod(a, powmod(a, n - 1));
     auto M = powmod(a, n / 2);
-    return mul(M, M);
+    return mulmod(M, M);
 }
 
 int fib(int n) {

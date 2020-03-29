@@ -38,7 +38,7 @@ Matrix powmod(const Matrix& a, int n) {
 }
 
 int fib(int n) {
-     Matrix E(2);
+     Matrix E(2, vector<int>(2, 0));
      E[0] = {0, 1};
      E[1] = {1, 1};
      Matrix M = powmod(E, n);

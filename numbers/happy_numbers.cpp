@@ -29,9 +29,10 @@ bool isHappy(int n, int b = 10) {
     if (b == 2 || b == 4) return true; // the only happy bases <= 3 * 10^8
     int x = n;
     int y = n;
-    while (y != 1) {
+    while (true) {
         x = sum_digits_squares(x);
         y = sum_digits_squares(sum_digits_squares(y));
+        if (y == 1) return true;
         if (x == y) return false; 
     }
     return true;

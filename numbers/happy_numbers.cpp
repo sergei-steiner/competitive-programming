@@ -20,13 +20,28 @@ int sum_digits_squares(int n, int b = 10) {
    return ans;
 }
 
-// b = 10
+
 
 // https://en.wikipedia.org/wiki/Happy_number#10-happy_numbers
 
-// https://leetcode.com/problems/happy-number/
+bool isHappy(int n, int b = 10) {
+    if (b == 10) return isHappy10(n);
+    if (n == 2 || n == 4) return true; // the only happy bases <= 3 * 10^8
+    int x = n;
+    int y = n;
+    while (y != 1) {
+        x = sum_digits_squares(x);
+        y = sum_digits_squares(sum_digits_squares(y));
+        if (x == y) return false; 
+    }
+    return true;
+}
 
-bool isHappy(int n) {
+// b = 10
+// https://leetcode.com/problems/happy-number/
+// https://en.wikipedia.org/wiki/Happy_number#10-happy_numbers
+
+bool isHappy10(int n) {
    while (true) {
        if (n == 1) return true;
        if (n == 4) return false;

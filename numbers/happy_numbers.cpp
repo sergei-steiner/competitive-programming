@@ -26,7 +26,7 @@ int sum_digits_squares(int n, int b = 10) {
 
 bool isHappy(int n, int b = 10) {
     if (b == 10) return isHappy10(n);
-    if (n == 2 || n == 4) return true; // the only happy bases <= 3 * 10^8
+    if (b == 2 || b == 4) return true; // the only happy bases <= 3 * 10^8
     int x = n;
     int y = n;
     while (y != 1) {

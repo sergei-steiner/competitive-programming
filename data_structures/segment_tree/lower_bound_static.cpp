@@ -47,7 +47,7 @@ int query(int l, int r, int x) {
 }
 
 int main() {
-    n = 100000;
-    t.resize(4 * n + 1);
+    
+    
     return 0;
 }

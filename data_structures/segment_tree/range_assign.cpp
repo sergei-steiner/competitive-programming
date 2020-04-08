@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+constexpr int dummy = numeric_limits<int>::min();
+
 int n;
 vector<int> t;
 
@@ -27,10 +29,10 @@ void build(const vector<int>& a) {
 }
 
 void push(int v) {
-    if (t[v] != -1) {
+    if (t[v] != dummy) {
         t[2 * v] = t[v];
         t[2 * v + 1] = t[v];
-        t[v] = -1;
+        t[v] = dummy;
     }
 }
 
@@ -55,9 +57,9 @@ int get(int v, int tl, int tr, int pos) {
     push(v);
     int tm = (tl + tr) / 2;
     if (pos <= tm) {
-        return t[v] + get(2 * v, tl, tm, pos);
+        return get(2 * v, tl, tm, pos);
     } else {
-        return t[v] + get(2 * v + 1, tm + 1, tr, pos);
+        return get(2 * v + 1, tm + 1, tr, pos);
     }
 }
 

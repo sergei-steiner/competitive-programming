@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// https://leetcode.com/problems/smallest-integer-divisible-by-k/
+
 class Solution {
 public:
     int smallestRepunitDivByK(int K) {

@@ -13,12 +13,12 @@ using namespace std;
 
 class Solution {
 public:
-    int rangeBitwiseAnd(int m, int n) {
+    int rangeBitwiseOr(int m, int n) {
         long long ans = 0;
         for (long long i = 0; i < 31; ++i) {
             long long left = (long long)m >> i;
             long long right = (long long)n >> i;
-            if (left == right && left & 1) ans += (1LL << i);
+            if (left != right || left & 1) ans += (1LL << i);
         }
         return ans;
     }

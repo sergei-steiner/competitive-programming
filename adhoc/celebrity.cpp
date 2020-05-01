@@ -11,7 +11,7 @@ using namespace std;
 
 // https://www.geeksforgeeks.org/the-celebrity-problem/
 
-int find_celebrity(vector<vector<int>>& a) {
+int find_celebrity(const vector<vector<int>>& a) {
     int n = a.size();
     int i = 0;
     int j = n - 1;

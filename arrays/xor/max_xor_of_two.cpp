@@ -38,10 +38,6 @@ public:
             }
         }
         if (a00.empty()) {
-            if (a10.empty()) return findMaximumXOR(a01, a1, i - 1);
-            else return findMaximumXOR(a01, a10, i - 1);
-        }
-        if (a00.empty()) {
             if (a10.empty()) return findMaximumXOR(a0, a1, i - 1);
             return findMaximumXOR(a0, a10, i - 1);
         }

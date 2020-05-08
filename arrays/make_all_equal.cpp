@@ -9,6 +9,19 @@ typedef long long int64;
 
 using namespace std;
  
+// https://leetcode.com/problems/minimum-moves-to-equal-array-elements
+
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int N = nums.size();
+        sort(nums.begin(), nums.end());
+        int ans = 0;
+        for (int i = 1; i < N; ++i) ans += nums[i] - nums[0];
+        return ans;
+    }
+};
+
 // https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/
 
 int minMoves2(vector<int>& a) {

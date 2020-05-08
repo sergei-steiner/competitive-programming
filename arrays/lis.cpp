@@ -42,7 +42,7 @@ vector<int> LIS(vector<int>& a) {
             d[i] = x;
             ind[i] = j;
             p[j] = ind[i - 1];
-            if (i + 1 <= n) p[ind[i + 1]] = ind[i];
+            if (i + 1 <= n && ind[i+ 1] != -1) p[ind[i + 1]] = ind[i];
         }
     }
     for (int i = n; i >= 0; --i) {

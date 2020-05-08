@@ -53,7 +53,7 @@ vector<int> LIS(vector<int>& a) {
                  ans.push_back(j);
                  j = p[j];
              }
-             reverse(begin(ans) end(ans));
+             reverse(begin(ans), end(ans));
              return ans;
          }
     }
@@ -66,6 +66,9 @@ int main() {
     vector<int> a(n);
     for (int i = 0; i < n; ++i) cin >> a[i];
     cout << lengthOfLIS(a) << endl;
-    
+    for (int x : LIS(a)) {
+        cout << x << " ";
+    }
+    cout << endl;
     return 0;
 }

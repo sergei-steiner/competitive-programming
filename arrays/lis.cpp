@@ -31,6 +31,7 @@ int lengthOfLIS(vector<int>& a) {
 vector<int> LIS(vector<int>& a) {
     int n = a.size();
     vector<int> d(n + 1, numeric_limits<int>::max());
+    d[0]  = numeric_limits<int>::min();
     vector<int> ind(n + 1, -1);
     vector<int> p(n, -1);
     

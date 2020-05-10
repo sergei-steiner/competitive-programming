@@ -25,6 +25,29 @@ vector<unsigned int> get_hashes(const string& t) {
    }
    return ans;
 }
+
+unsigned int get_hash(const string& t) {
+   if (t.empty()) return 0; 
+   return get_hashes(t).back();
+}
+
+vector<int> substr(const string& s, const string& t) {
+    int n = s.size();
+    int m = t.size();
+    if (n < m) return {} ;
+    auto sh = get_hashes(s);
+    auto th = get_hash(t);
+    vector<int> ans; 
+    for (int i = 0; i + m <= n; ++i) {
+        auto subh = sh[i + m - 1];
+        if (i > 0) subh -= sh[i - 1];
+        if (subh == th * deg[i]) ans.push_back(i);
+    }
+   
+   
+    return ans; 
+}
+
     
 int main() {
 

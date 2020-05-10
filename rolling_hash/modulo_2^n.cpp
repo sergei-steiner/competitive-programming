@@ -52,8 +52,8 @@ vector<int> substr(const string& s, const string& t) {
 int main() {
    string s;
    cin >> s;
-   string t:
-   cin >> s;
+   string t;
+   cin >> t;
    for (int x : substr(s, t)) cout << x << " ";
 
     return 0;

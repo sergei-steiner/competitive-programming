@@ -48,6 +48,46 @@ vector<int> substr(const string& s, const string& t) {
     return ans; 
 }
 
+bool ok(const string& s, const string& t, int l) {
+    int n = s.size();
+    int m = t.size();
+    auto h1 = get_hashes(s);
+    auto h2 = get_hashes(t);
+    unordered_set<unsigne int> hashes;
+    for (int i = 0; i + l <= n; ++i) {
+        unsigned int h = h1[i + len - 1];
+        if (i > 0) h -= h1[i - 1];
+        h *= deg[n - 1 - i];
+        hashes.insert(h);
+    }
+    for (int i = 0; i + l <= m; ++i) {
+        unsigned int h = h2[i + len - 1];
+        if (i > 0) h -= h2[i - 1];
+        h *= deg[n - 1 - i];
+        if (hashes.count(h)) return true;
+    }
+   
+    return false;
+}
+
+int common_substr(const string& s, const string& t) {
+    if (s.size() < t.size()) common_substr(t, s);
+    int n = s.size();
+    int m = t.size();
+    int l = 0;
+    int r = m;
+    while (l < r) {
+        int mid = (l + r) / 2;
+        bool ok = has_substr(s, t, mid);
+        if (ok) {
+           l = m;
+        } else {
+           r = m - 1;
+        }
+    }
+    return l;
+}
+
     
 int main() {
    string s;

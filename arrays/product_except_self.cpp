@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-// https://leetcode.com/problems/find-the-duplicate-number/
+// https://leetcode.com/problems/product-of-array-except-self
 
 vector<int> productExceptSelf(vector<int>& a) {
     int n = a.size();

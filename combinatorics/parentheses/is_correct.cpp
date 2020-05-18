@@ -9,6 +9,17 @@ typedef long long int64;
 
 using namespace std;
 
+// (a * (b + c))
+bool isCorrect1(const string& s) {
+    int sum = 0;
+    for (char ch : s) {
+        if (ch == '(') ++sum;
+        if (ch == ')') --sum;
+        if (sum < 0) return false;
+    }
+    return sum == 0;
+}
+
 bool isCorrect3(const string& s) {
     stack<char> a;
     for (char ch : s) {

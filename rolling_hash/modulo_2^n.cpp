@@ -31,6 +31,12 @@ unsigned int get_hash(const string& t) {
    return get_hashes(t).back();
 }
 
+unsigned int substr_hash(int i, int j, const vector<unsigned int>& h) {
+    unsigned int ans = h[j];
+    if (i > 0) ans -= h[i - 1];
+    return ans * deg[h.size() - 1 - i];
+}
+
 vector<int> substr(const string& s, const string& t) {
     int n = s.size();
     int m = t.size();

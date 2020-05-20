@@ -37,6 +37,21 @@ unsigned int substr_hash(int i, int j, const vector<unsigned int>& h) {
     return ans * deg[h.size() - 1 - i];
 }
 
+
+int different_substrings(const string& s) {
+    set<pair<int, unsigned int>> a;
+    int n = s.size();
+    auto h = get_hashes(s);
+    
+    
+    for (int i = 0; i < n; ++i) {
+       for (int j = i; j < n; ++j) {
+           a.emplace_back(j - i + 1, substr_hash(i, j, h)); 
+       }
+    }
+    return a.size();
+}
+
 vector<int> substr(const string& s, const string& t) {
     int n = s.size();
     int m = t.size();
@@ -53,6 +68,8 @@ vector<int> substr(const string& s, const string& t) {
    
     return ans; 
 }
+
+
 
 bool ok(const string& s, const string& t, int l) {
     int n = s.size();

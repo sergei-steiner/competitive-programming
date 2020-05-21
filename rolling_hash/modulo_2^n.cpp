@@ -38,6 +38,23 @@ unsigned int substr_hash(int i, int j, const vector<unsigned int>& h) {
 }
 
 
+int cmp(int l1, int r1, int l2, int r2, const string& s, const vector<unsigned int>& h) {
+    int l = l1;
+    int r = min(r1, l1 + r2 - l2);
+    while (l < r) {
+        int m = (l + r) / 2;
+        if (substr_hash(l1, m, h) == substr_hash(l2, l2 + m - l, h)) {
+           l = m + 1;
+        } else {
+           r = m;
+        }
+    }
+    if (s[l] < s[l2 + l - l1]) return -1;
+    if (s[l] > s[l2 + l - l1]) return 1;
+    return 0;
+}
+
+
 int different_substrings(const string& s) {
     set<pair<int, unsigned int>> a;
     int n = s.size();

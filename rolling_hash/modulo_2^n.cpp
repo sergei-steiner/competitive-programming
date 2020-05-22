@@ -54,6 +54,17 @@ int cmp(int l1, int r1, int l2, int r2, const string& s, const vector<unsigned i
     return 0;
 }
 
+int min_cyclic_shift(string s) {
+    int n = s.size();
+    s += s;
+    auto h = get_hashes(s);
+    int ans = 0;
+    for (int i = 1; i < n; ++i) {
+        if (cmp(ans, ans + n - 1, i, i + n - 1, s, h) == 1) ans = i; 
+    }
+    return ans;
+}
+
 
 int different_substrings(const string& s) {
     set<pair<int, unsigned int>> a;

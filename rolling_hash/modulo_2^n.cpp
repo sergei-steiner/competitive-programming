@@ -65,6 +65,36 @@ int min_cyclic_shift(string s) {
     return ans;
 }
 
+bool is_palindrome(int i, int j, const vector<unsigned int>& h, const vector<unsigned int>& h_rev) {
+    return substr_hash(i, j, h) == substr_hash(i, j, h_rev);
+}
+
+int longest_palindrome(string s) {
+    auto h = get_hashes(s);
+    reverse(begin(s), end(s));
+    auto h_rev = get_hashes(s);
+    int n = s.size();
+    int ans = 0;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            int l = i - j + 1;
+            int r = i + j - 1;
+            if (l < 0) break;
+            if (r >= n) break;
+            if (is_palindrome(l, r, h, h_rev)) ans = max(ans, r - l + 1);
+        }
+    }
+    for (int i = 0; i + 1 < n; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            int l = i - j + 1;
+            int r = i + j;
+            if (l < 0) break;
+            if (r >= n) break;
+            if (is_palindrome(l, r, h, h_rev)) ans = max(ans, r - l + 1);
+        }
+    }
+    return ans;
+}
 
 int different_substrings(const string& s) {
     set<pair<int, unsigned int>> a;

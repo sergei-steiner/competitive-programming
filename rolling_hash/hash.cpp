@@ -12,7 +12,23 @@ using namespace std;
 constexpr int p = 43;
 vector<unsigned int> deg = {1};
 
-vector<unsigned int> get_hashes(const string& t) {
+vector<int> get_hashes(const string& t, int mod) {
+   int n = t.size();
+   while (deg.size() <= n) {
+       deg.push_back((int64)deg.back() * p % mod);
+   }
+   vector<int> ans;
+   int s = 0; 
+   for (int i = 0; i < n; ++i) {
+      s += (int64)deg[i] * (t[i] - 'a' + 1); 
+      s %= mod;
+      ans.push_back(s);
+   }
+   return ans;
+}
+
+
+vector<int> get_hashes(const string& t) {
    int n = t.size();
    while (deg.size() <= n) {
        deg.push_back(deg.back() * p);

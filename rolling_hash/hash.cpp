@@ -12,7 +12,7 @@ using namespace std;
 constexpr int p = 43;
 vector<unsigned int> deg = {1};
 
-// modulo prime
+// modulo prime mod
 vector<int> get_hashes(const string& t, int mod) {
    int n = t.size();
    while (deg.size() <= n) {

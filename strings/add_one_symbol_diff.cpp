@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-https://leetcode.com/problems/longest-string-chain
+// https://leetcode.com/problems/longest-string-chain
 
 bool add_one_symbol_diff(const string& t, const string& s) {
     int n = s.size();

@@ -21,6 +21,17 @@ int64 C(int n, int k) {
     C_dp[{n, k}] = ans;
     return ans;
 }
+
+// Hypergeometric distribution
+// https://en.wikipedia.org/wiki/Hypergeometric_distribution
+// N is the population size
+// K is the number of success states in the population
+// n is the number of draws (i.e. quantity drawn in each trial)
+// k is the number of observed successes
+
+double HyperGeom(int k, int n, int K, int N) {
+    return 1.0 * C(K, k) * C(N - K, n - k) / C(N, n);
+}
     
 int main() {
     int n, k;

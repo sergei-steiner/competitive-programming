@@ -24,7 +24,7 @@ Matrix mulmod(const Matrix& a, const Matrix& b) {
             }
         }
     }
-	return c;
+    return c;
 }
 
 Matrix powmod(const Matrix& a, int n) {
@@ -42,7 +42,7 @@ int fib(int n) {
      Matrix E(2, vector<int>(2, 0));
      E[0] = {0, 1};
      E[1] = {1, 1};
-	 Matrix M = powmod(E, n);
+     Matrix M = powmod(E, n);
      return (M[0][0] + M[0][1]) % MODULO;
 }
     

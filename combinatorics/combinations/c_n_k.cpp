@@ -47,7 +47,15 @@ int64 MultiC(int n, const vector<int>& K) {
    }
    return ans;
 }
-    
+
+
+// Stars and bars
+// https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics)
+
+int64 StarsAndBars(int n, int k) {
+   return C(n + k - 1, n); // == C(n + k - 1, k - 1) which makes even more sense
+}
+
 int main() {
     int n, k;
     cin >> n >> k;

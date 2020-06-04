@@ -32,6 +32,21 @@ int64 C(int n, int k) {
 double HyperGeom(int k, int n, int K, int N) {
     return 1.0 * C(K, k) * C(N - K, n - k) / C(N, n);
 }
+
+
+// Multinomial distribution
+// https://en.wikipedia.org/wiki/Multinomial_theorem
+
+// via C(n, k)
+int64 MultiC(int n, const vector<int>& K) {
+   int64 ans = 1;
+   int sum = 0;
+   for (int k : K) {
+       sum += k;
+       ans *= C(sum, k);
+   }
+   return ans;
+}
     
 int main() {
     int n, k;

@@ -15,7 +15,7 @@ vector<vector<int>> MirrorGray(int n) {
     }
     auto g = MirrorGray(n - 1);
     vector<vector<int>> ans;
-    for (auto& v : g) {
+    for (auto v : g) {
        v.emplace_back(0);
        ans.emplace_back(v);
     }

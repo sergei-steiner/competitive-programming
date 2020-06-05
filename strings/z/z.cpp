@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// CHECKED via https://judge.yosupo.jp/problem/zalgorithm
+// http://e-maxx.ru/algo/z_function
 vector<int> z_func(const string& s) {
     int n = sz(s);
     vector<int> z(n, 0);
@@ -32,6 +34,7 @@ int main() {
     cin >> s;
     int n = sz(s);
     vector<int> z = z_func(s);
+    // sometimes they say z[0] = n
     for (int i = 0; i < n; ++i) {
         cout << "z[" << i << "] = " << z[i] << endl;
     }

@@ -19,7 +19,7 @@ vector<vector<int>> MirrorGray(int n) {
        v.emplace_back(0);
        ans.emplace_back(v);
     }
-    reverse(begin(g), end(g);
+    reverse(begin(g), end(g));
     for (auto v : g) {
        v.emplace_back(1);
        ans.emplace_back(v);

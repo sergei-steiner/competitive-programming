@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// https://neerc.ifmo.ru/wiki/index.php?title=Коды_антигрея
+
 vector<vector<int>> MirrorGray(int n) {
     if (n == 1) {
         return {{0}, {1}};

@@ -54,7 +54,20 @@ int main() {
     int n;
     cin >> n;
     
-    cout << n << " -> " << gray(n) << " -> " << reverse_gray(gray(n)) << endl;
-    
+    cout << "MirrorGray:" << endl;
+    for (auto v : MirrorGray(n)) {
+        for (int x : v) {
+	    cout << x;
+	}
+	cout << endl;
+    }
+	
+    cout << "AntiGray:" << endl;
+    for (auto v : AntiGray(n)) {
+        for (int x : v) {
+	    cout << x;
+	}
+	cout << endl;
+    }
     return 0;
 }

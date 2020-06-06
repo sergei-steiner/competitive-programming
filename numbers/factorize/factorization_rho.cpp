@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-
-
 #define sz(x) ((int)x.size())
 #define all(x) (x).begin(), (x).end()
 #define pb(x) push_back(x)
@@ -35,7 +33,33 @@ int64 pollard_rho(int64 n, int iterations_count = 100000) {
 	return n;
 }
 
-int main() {
+vector<int> factorize(int n) {
+    if (n == 1) return {};
+    if (is_prime(n)) return {n};
+    int g = pollard_rho(n);
+    if (g == n) return {n};
+    vector<int> ans;
+    for (int p : factorize(g)) {
+        ans.push_back(p);
+    }
+    for (int p : factorize(n / g)) {
+        ans.push_back(p);
+    }
+    return ans;
+}
 
+int main() {
+    int k;
+    cin >> k;
+    for (int i = 0; i < k; ++i) {
+        int x;
+	cin >> x;
+	auto v = factorize(x);
+	cout << v.size();
+	for (int p : v) {
+	    cout << " " << p;
+	}
+	cout << endl;
+    }
     return 0;
 }

@@ -48,7 +48,7 @@ bool miller_rabin(int64 n, int64 b) {
 }
 
 bool is_prime(int64 n) {
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < 10; ++i) {
         if (!miller_rabin(n, rand() % n)) {
             return false;
         }
@@ -56,29 +56,43 @@ bool is_prime(int64 n) {
     return true;
 }
 
-int64 pollard_rho(int64 n, int iterations_count = 100000) {
-	int64 b0 = rand() % n;
-	int64 b1 = b0;
-	for (int count = 0; count < iterations_count; ++count) {
-		b0 = (mulmod(b0, b0, n) + 1) % n;
-		b1 = (mulmod(b1, b1, n) + 1) % n;
-		b1 = (mulmod(b1, b1, n) + 1) % n;
-		int64 g = gcd(abs(b1 - b0), n);
-		if (1 < g && g < n) return g;
-	}
-	return n;
+int64 pollard_rho_iter(int64 n) {
+    if (n % 2 == 0) return 2;
+    if (n <= 1000) {
+        for (int64 i = 2; i * i <= n; ++i) {
+           if (n % i == 0) return i;
+        }
+    }
+    int64 b0 = rand() % n;
+    int64 b1 = b0;
+    int64 d = 1;
+    while (d == 1) {
+        b0 = (mulmod(b0, b0, n) + 1) % n;
+        b1 = (mulmod(b1, b1, n) + 1) % n;
+        b1 = (mulmod(b1, b1, n) + 1) % n;
+        d = gcd(abs(b1 - b0), n);
+    }
+    if (d == n) return -1;
+    return d;
 }
 
-vector<int> factorize(int n) {
+int64 pollard_rho(int64 n) {
+    while (true) {
+        int64 ans = pollard_rho_iter(n);
+        if (ans != -1) return ans;
+    }
+}
+
+vector<int64> factorize(int64 n) {
     if (n == 1) return {};
     if (is_prime(n)) return {n};
-    int g = pollard_rho(n);
+    int64 g = pollard_rho(n);
     if (g == n) return {n};
-    vector<int> ans;
-    for (int p : factorize(g)) {
+    vector<int64> ans;
+    for (int64 p : factorize(g)) {
         ans.push_back(p);
     }
-    for (int p : factorize(n / g)) {
+    for (int64 p : factorize(n / g)) {
         ans.push_back(p);
     }
     return ans;
@@ -88,14 +102,15 @@ int main() {
     int k;
     cin >> k;
     for (int i = 0; i < k; ++i) {
-        int x;
-	cin >> x;
-	auto v = factorize(x);
-	cout << v.size();
-	for (int p : v) {
-	    cout << " " << p;
-	}
-	cout << endl;
+        int64 x;
+        cin >> x;
+        auto v = factorize(x);
+        cout << v.size();
+        sort(begin(v), end(v));
+        for (int64 p : v) {
+            cout << " " << p;
+        }
+        cout << endl;
     }
     return 0;
 }

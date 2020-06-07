@@ -57,6 +57,8 @@ bool is_prime(int64 n) {
 }
 
 int main() {
-
+    int n;
+    cin >> n;
+    cout << is_prime(n) << endl;
     return 0;
 }

@@ -13,7 +13,7 @@ using namespace std;
 
 // very nice idea, based on continuity of prefix sums, 
 // for sum <= 0 we need only first occurence of sum - 1 
-// (it would precede any occurences of sum - 2, sum - 3 etc
+// (it would precede any occurences of sum - 2, sum - 3 etc. )
 // for sum = 0 we always need the prefix itself
 
 class Solution {

@@ -72,8 +72,8 @@ int64 generate_random_prime(int l, int r) {
 }
 
 int main() {
-    int l;
-    int r;
+    int64 l;
+    int64 r;
     cin >> l >> r;
     cout << generate_random_prime(l, r) << endl;
     return 0;

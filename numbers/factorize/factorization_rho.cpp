@@ -9,6 +9,9 @@ typedef long long int64;
 
 using namespace std;
 
+// CHECKED via https://judge.yosupo.jp/problem/factorize
+// https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm
+
 int64 gcd(int64 a, int64 b) {
     return b ? gcd(b, a % b) : a;
 }

@@ -57,13 +57,13 @@ bool is_prime(int64 n) {
 }
 
 int64 rand_int64() {
-    int m = 1000000000;
+    int64 m = 1000000000;
     int64 x = rand() % m;
     int64 y = rand() % m;
     return x * m + y;
 }
 
-int64 generate_random_prime(int l, int r) {
+int64 generate_random_prime(int64 l, int64 r) {
     for (int step = 0; step < 100000; ++step) {
         int64 p = l + rand_int64() % (r - l + 1);
         if (is_prime(p)) return p;

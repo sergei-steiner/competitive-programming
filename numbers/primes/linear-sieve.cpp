@@ -19,7 +19,7 @@ vector<int> linear_sieve(int n) {
             lp[i] = i;
             primes.pb(i);
         }
-        for (int j = 0; j < sz(primes) && primes[j] <= lp[i] && i * primes[j] <= n; ++j)
+        for (int j = 0; j < primes.size() && primes[j] <= lp[i] && i * primes[j] <= n; ++j)
             lp[i * primes[j]] = primes[j];
     }
     return primes;

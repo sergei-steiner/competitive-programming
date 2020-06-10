@@ -15,11 +15,11 @@ vector<int> linear_sieve(int n) {
     vector<int> lp(n + 1, 0);
     vector<int> primes;
     for (int i = 2; i <= n; ++i) {
-	    if (lp[i] == 0) {
-		    lp[i] = i;
-		    primes.pb(i);
-	    }
-	    for (int j = 0; j < sz(primes) && primes[j] <= lp[i] && i * primes[j] <= n; ++j)
+        if (lp[i] == 0) {
+            lp[i] = i;
+            primes.pb(i);
+        }
+        for (int j = 0; j < sz(primes) && primes[j] <= lp[i] && i * primes[j] <= n; ++j)
             lp[i * primes[j]] = primes[j];
     }
     return primes;

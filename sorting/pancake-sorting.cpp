@@ -10,9 +10,8 @@ typedef long long int64;
 using namespace std;
 
 // https://leetcode.com/problems/pancake-sorting
-
 // naive 2 * n
-class Solution1 {
+class Solution {
 public:
     vector<int> pancakeSort(vector<int>& a) {
         int n = a.size();

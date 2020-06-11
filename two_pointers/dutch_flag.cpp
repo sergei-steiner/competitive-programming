@@ -13,6 +13,13 @@ using namespace std;
 // https://leetcode.com/problems/sort-colors
 class Solution {
 public:
+    
+    // the main function
+    // invariants
+    // - entries from 0 up to (but not including) i are values less than mid,
+    // - entries from i up to (but not including) j are values equal to mid,
+    // - entries from j up to (but not including) k are values not yet sorted, and
+    // - entries from k to the end of the array are values greater than mid.
     void threeWayPartition(vector<int>& a, int mid) {
         int n = a.size();
         int i = 0;

@@ -15,7 +15,7 @@ int s(int n, int k) {
    if (n == 0) return 0;
    if (k == 0) return 0;
    if (k > n) return 0;
-   if (s_dp.count(n, k)) {
+   if (s_dp.count({n, k})) {
        return s_dp[{n, k}];
    }
    int ans = s(n - 1, k - 1) + (n - 1) * s(n - 1, k);

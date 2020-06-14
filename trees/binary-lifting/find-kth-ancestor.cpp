@@ -56,7 +56,8 @@ public:
  * TreeAncestor* obj = new TreeAncestor(n, parent);
  * int param_1 = obj->getKthAncestor(node,k);
  */
-    
+
+
 int main() {
 
     return 0;

@@ -11,6 +11,8 @@ using namespace std;
 
 // https://leetcode.com/problems/distribute-coins-in-binary-tree
 
+// calculate disbalance for each node in dp-like manner
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

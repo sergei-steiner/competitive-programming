@@ -18,19 +18,19 @@ vector<int> dijkstra(int s, const vector<vector<pair<int, int>>>& g) {
     vector<int> d(n, inf);
     d[s] = 0;
     vector<bool> used(n, false);
-	  for (int i = 0; i < n; ++i) {
-		   int v = -1;
-		   for (int j = 0; j < n; ++j) {
-           if (used[j]) continue;
-           if (v == -1 || d[j] < d[v]) v = j;
-       }
-       if (d[v] == inf) break;
-       used[v] = true;
-    	 for (auto [to, len] : g[v]) {
-			     if (d[v] + len < d[to]) {
-				       d[to] = d[v] + len;
-			     }
-		    }
+    for (int i = 0; i < n; ++i) {
+        int v = -1;
+        for (int j = 0; j < n; ++j) {
+            if (used[j]) continue;
+            if (v == -1 || d[j] < d[v]) v = j;
+        }
+        if (d[v] == inf) break;
+        used[v] = true;
+        for (auto [to, len] : g[v]) {
+            if (d[v] + len < d[to]) {
+                d[to] = d[v] + len;
+            }
+        }
     }
     return d;
 }
@@ -41,20 +41,20 @@ vector<int> dijkstra(int s, int t, const vector <vector<pair<int, int>>>& g) {
     vector<int> p(n, -1);
     d[s] = 0;
     vector<bool> used(n, false);
-	  for (int i = 0; i < n; ++i) {
-		   int v = -1;
-		   for (int j = 0; j < n; ++j) {
-           if (used[j]) continue;
-           if (v == -1 || d[j] < d[v]) v = j;
-       }
-       if (d[v] == inf) break;
-       used[v] = true;
-    	 for (auto [to, len] : g[v]) {
-			     if (d[v] + len < d[to]) {
-				       d[to] = d[v] + len;
-				       p[to] = v;
-			     }
-		    }
+    for (int i = 0; i < n; ++i) {
+        int v = -1;
+        for (int j = 0; j < n; ++j) {
+        if (used[j]) continue;
+        if (v == -1 || d[j] < d[v]) v = j;
+    }
+    if (d[v] == inf) break;
+    used[v] = true;
+    for (auto [to, len] : g[v]) {
+        if (d[v] + len < d[to]) {
+            d[to] = d[v] + len;
+            p[to] = v;
+            }
+        }
     }
     if (d[t] == inf) return vector<int>();
     vector<int> path;

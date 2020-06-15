@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// http://e-maxx.ru/algo/dijkstra_sparse
+
 const int inf = numeric_limits<int>::max(); 
 
 vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {

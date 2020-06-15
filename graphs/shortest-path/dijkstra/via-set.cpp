@@ -59,56 +59,6 @@ vector<int> dijkstra_set(int s, int t, const vector < vector < pair<int, int> > 
     return path;
 }
 
-vector<int> dijkstra_heap(int s, const vector<vector<pair<int, int>>>& g) {
-    int n = g.size();
-    vector<int> d(n, inf);
-    d[s] = 0;
-    priority_queue<pair<int, int>> q;
-    q.push(mp(-d[s], s));
-    while (!q.empty()) {
-        int v = q.top().second;
-        int cur_d = -q.top().first;
-        q.pop();
-        if (cur_d > d[v]) continue;
-        for (auto [to, len] : g[v]) {
-            if (d[v] + len < d[to]) {
-                d[to] = d[v] + len;
-                q.push(mp(-d[to], to));
-            }
-        }
-    }
-    return d;
-}
-
-vector<int> dijkstra_heap(int s, int t, const vector < vector < pair<int, int> > >& g) {
-    int n = g.size();
-    vector<int> d(n, inf);
-    vector<int> p(n, -1);
-    d[s] = 0;
-    priority_queue<pair<int, int>> q;
-    q.push(mp(-d[s], s));
-    while (!q.empty()) {
-        int v = q.top().second;
-        int cur_d = -q.top().first;
-        q.pop();
-        if (cur_d > d[v]) continue;
-        for (auto [to, len] : g[v]) {
-            if (d[v] + len < d[to]) {
-                d[to] = d[v] + len;
-                p[to] = v;
-                q.push(mp(-d[to], to));
-            }
-        }
-    }
-
-    if (d[t] == inf) return vector<int>();
-    vector<int> path;
-    for (int cur = t; cur != -1; cur = p[cur]) path.pb(cur);
-    reverse(all(path));
-    return path;
-}
-
-
 int main() {
 
     return 0;

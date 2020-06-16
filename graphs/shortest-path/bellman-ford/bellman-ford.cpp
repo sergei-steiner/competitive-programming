@@ -21,7 +21,7 @@ constexpr int inf = 1000000000;
  
 vector<int> bellman_ford(int n, const vector<edge>& edges, int s) {
     vector<int> d(n, inf);
-    d[v] = 0;
+    d[s] = 0;
     for (int i = 0; i < n - 1; ++i) {
         for (auto e : edges) {
             if (d[e.x] < inf) {

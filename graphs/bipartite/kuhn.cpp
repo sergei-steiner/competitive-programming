@@ -45,7 +45,7 @@ int main() {
         g[x].push_back(y);
     }
     
-    mt.assign (k, -1);
+    mt.assign(k, -1);
 
     for (int v = 0; v < n; ++v) {
 	used.assign(n, false);

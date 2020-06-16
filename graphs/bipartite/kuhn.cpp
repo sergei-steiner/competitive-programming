@@ -9,6 +9,9 @@ typedef long long int64;
 
 using namespace std;
 
+// http://e-maxx.ru/algo/ford_bellman
+// TLE https://judge.yosupo.jp/submission/12672
+
 int n, k;
 vector<vector<int>> g;
 vector<int> mt;
@@ -40,21 +43,22 @@ int main() {
         int x;
         int y;
         cin >> x >> y;
-        --x;
-        --y;
+        //--x;
+        //--y;
         g[x].push_back(y);
     }
     
     mt.assign(k, -1);
-
+ 
+    int ans = 0;
     for (int v = 0; v < n; ++v) {
 	used.assign(n, false);
-        try_kuhn(v);
+        if (try_kuhn(v)) ++ans;
     }
-
+    cout << ans << endl;
     for (int i = 0; i < k; ++i) {
         if (mt[i] != -1) {
-            cout << mt[i] + 1 << " " << i + 1 << endl;
+            cout << mt[i] << " " << i << endl;
         }
     }
 	

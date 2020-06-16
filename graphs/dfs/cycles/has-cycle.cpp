@@ -15,16 +15,15 @@ class Solution {
 public:
     vector<int> color;
     vector<vector<int>> g;
+    // is acyclic
     bool dfs(int v) {
         color[v] = 1;
         for (int to : g[v]) {
             if (color[to] == 0) {
                 if (!dfs(to)) return false;
             } else if (color[to] == 1) {
-           
                 return false;
             }
-            
         }
         color[v] = 2;
         return true;

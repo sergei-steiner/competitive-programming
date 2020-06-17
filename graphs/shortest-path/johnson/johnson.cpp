@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// https://neerc.ifmo.ru/wiki/index.php?title=Алгоритм_Джонсона
+
 int inf = 1000000000;
 
 vector<int> dijkstra_set(int s, const vector<vector<pair<int, int>>>& g) {

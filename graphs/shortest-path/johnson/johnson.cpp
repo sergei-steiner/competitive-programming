@@ -69,9 +69,9 @@ vector<vector<int>> johnson(vector<vector<pair<int, int>>> g) {
         e.push_back(x);
     }
     vector<int> phi = bellman_ford(n, n + 1, e);
-    for (int i = 0; i < g[i]; ++i) {
-        for (int j = 0; j < g[i].size(); ++j) {
-            g[i][j].second += phi[i] - phi[g[i][j].first];
+    for (int i = 0; i < n; ++i) {
+        for (auto& x : g[i]) {
+            x.second += phi[i] - phi[x.first];
 	}
     }
     vector<vector<int>> d(n);

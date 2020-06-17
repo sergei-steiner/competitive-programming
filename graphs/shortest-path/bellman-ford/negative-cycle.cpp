@@ -40,12 +40,12 @@ vector<int> negative_cycle(int n, const vector<edge>& edges) {
     }
     if (x == -1) return {};
     int y = x;
-		for (int i = 0; i < n; ++i) y = p[y];
+    for (int i = 0; i < n; ++i) y = p[y];
     vector<int> ans;
     for (int cur = y; ; cur = p[cur]) {
-		    ans.push_back(cur);
-		    if (cur == y && ans.size() > 1) break;
-		}
+        ans.push_back(cur);
+        if (cur == y && ans.size() > 1) break;
+    }
     reverse(begin(ans), end(ans));
     return ans;
 }

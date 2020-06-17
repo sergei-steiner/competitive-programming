@@ -56,7 +56,7 @@ vector<int> bellman_ford_refined(int n, const vector<edge>& edges, int s, int t)
         bool any = false;
         for (auto e : edges) {
             if (d[e.x] < inf) {
-                if (d[e.y] < d[e.x] + e.cost) {
+                if (d[e.y] > d[e.x] + e.cost) {
                     d[e.y] = d[e.x] + e.cost;
                     p[e.y] = e.x;
                 }

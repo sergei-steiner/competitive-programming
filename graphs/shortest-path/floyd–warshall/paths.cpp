@@ -11,7 +11,7 @@ using namespace std;
 
 // http://e-maxx.ru/algo/floyd_warshall_algorithm
 
-const int inf = 10000000000;
+const int inf = 1000000000;
 
 class Floyd {
 

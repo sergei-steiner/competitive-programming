@@ -13,6 +13,7 @@ using namespace std;
  
 vector<vector<int>> floyd(const vector<vector<int>>& a) {
     vector<vector<int>> d = a;
+    int n = a.size();
     for (int k = 0; k < n; ++k) {
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {

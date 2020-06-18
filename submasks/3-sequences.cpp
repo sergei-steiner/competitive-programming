@@ -25,6 +25,7 @@ vector<string> comb3(int n) {
                 }
                 str.push_back('c');
             }
+            if (s == 0) break;
             ans.push_back(str);
         }
     }

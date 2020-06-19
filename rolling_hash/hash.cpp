@@ -29,7 +29,7 @@ vector<int> get_hashes(const string& t, int mod) {
 }
 
 
-vector<int> get_hashes(const string& t) {
+vector<unsigned int> get_hashes(const string& t) {
    int n = t.size();
    while (deg.size() <= n) {
        deg.push_back(deg.back() * p);

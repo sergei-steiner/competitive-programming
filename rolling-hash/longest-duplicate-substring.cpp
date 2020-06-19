@@ -48,8 +48,8 @@ public:
                 ok = true;
             } else {
                 for (int i = 0; i + m <= n; ++i) {
-                    int hash = substr_hash(i, i + m - 1, h);
-                    if (a.count(hash) && S.substr(i, m) == S.substr(a[hash], m)) {
+                    uint64 hash = substr_hash(i, i + m - 1, h);
+                    if (a.count(hash)) {
                         ok = true;
                         from = i;
                         break;

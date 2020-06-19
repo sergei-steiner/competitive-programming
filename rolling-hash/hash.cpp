@@ -173,14 +173,14 @@ int common_substr(const string& s, const string& t) {
     int n = s.size();
     int m = t.size();
     int l = 0;
-    int r = m;
-    while (l < r) {
+    int r = m + 1;
+    while (l + 1 < r) {
         int mid = (l + r) / 2;
         bool ok = has_substr(s, t, mid);
         if (ok) {
            l = m;
         } else {
-           r = m - 1;
+           r = m;
         }
     }
     return l;

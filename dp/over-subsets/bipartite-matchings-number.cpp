@@ -45,7 +45,6 @@ public:
                 for (int j = 0; j < n; ++j) {
                     if (i & (1 << j)) {
                         if (a[j] & (1LL << l)) {      
-                            long long res = dp[l - 1][i ^ (1 << j)];
                             dp[l][i] += dp[l - 1][i ^ (1 << j)];
                             dp[l][i] %= mod;
                         }

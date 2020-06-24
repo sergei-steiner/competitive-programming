@@ -9,9 +9,14 @@ typedef long long int64;
 
 using namespace std;
 
-// http://e-maxx.ru/algo/ford_bellman
+// http://e-maxx.ru/algo/kuhn_matching
+// https://codeforces.com/blog/entry/17023
+
+// kuhn + optimization
+// probably still O(VE)
+// but passes this:
 // https://judge.yosupo.jp/problem/bipartitematching
-// TLE https://judge.yosupo.jp/submission/12672
+// https://judge.yosupo.jp/submission/13731
 
 int n, k;
 vector<vector<int>> g;
@@ -26,10 +31,10 @@ bool try_kuhn(int v) {
     used[v] = true;
     for (int to : g[v]) {
         if (mt_right[to] == -1 || try_kuhn(mt_right[to])) {
-	    mt_right[to] = v;
+            mt_right[to] = v;
             mt_left[v] = to;
-	    return true;
-	}
+            return true;
+        }
     }
     return false;
 }
@@ -59,7 +64,7 @@ int main() {
     while (true) {
         bool ok = false;
         for (int v = 0; v < n; ++v) {
-	          if (mt_left[v] == -1 && try_kuhn(v)) {
+            if (mt_left[v] == -1 && try_kuhn(v)) {
                 ++ans;
                 ok = true;
             }
@@ -73,6 +78,6 @@ int main() {
             cout << mt_right[i] << " " << i << endl;
         }
     }
-	
+
     return 0;
 }

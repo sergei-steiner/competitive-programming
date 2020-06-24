@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-// http://e-maxx.ru/algo/ford_bellman
+// http://e-maxx.ru/algo/kuhn_matching
 // https://judge.yosupo.jp/problem/bipartitematching
 // TLE https://judge.yosupo.jp/submission/12672
 

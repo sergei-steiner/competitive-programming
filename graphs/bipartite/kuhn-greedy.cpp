@@ -69,8 +69,8 @@ int main() {
     
     cout << ans << endl;
     for (int i = 0; i < k; ++i) {
-        if (mt[i] != -1) {
-            cout << mt[i] << " " << i << endl;
+        if (mt_right[i] != -1) {
+            cout << mt_right[i] << " " << i << endl;
         }
     }
 	

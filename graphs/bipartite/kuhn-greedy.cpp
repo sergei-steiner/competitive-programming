@@ -25,9 +25,9 @@ bool try_kuhn(int v) {
     }
     used[v] = true;
     for (int to : g[v]) {
-        if (mt[to] == -1 || try_kuhn(mt[to])) {
-	    mt[to] = v;
-      mt_left[v] = to;
+        if (mt_right[to] == -1 || try_kuhn(mt_right[to])) {
+	    mt_right[to] = v;
+            mt_left[v] = to;
 	    return true;
 	}
     }

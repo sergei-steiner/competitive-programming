@@ -9,8 +9,11 @@ typedef long long int64;
 
 using namespace std;
 
-
 // https://leetcode.com/problems/stone-game-iii
+
+// very simple and well known trick:
+// create target function as
+// Alice score - Bob score
 
 class Solution {
 public:

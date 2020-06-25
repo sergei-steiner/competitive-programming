@@ -21,17 +21,16 @@ public:
        for (int i = 0; i < n; ++i) parent[i] = i;
    }
 
-   virtual size_t FindSet(size_t v) {
+   size_t FindSet(size_t v) {
        if (v == parent[v]) return v;
        return parent[v] = FindSet(parent[v]);
    }
 
-   virtual size_t Union(size_t a, size_t b) {
+   void Union(size_t a, size_t b) {
        a = FindSet(a);
        b = FindSet(b);
        if (rand() & 1) swap(a, b);
        parent[b] = a;
-       return a;
    }
 
 };

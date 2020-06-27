@@ -23,7 +23,19 @@ int A(int n, int m) {
    A_dp[{n, m}] = ans;
    return ans;
 }
-    
+
+
+int f(int n) {
+    int ans = 1;
+    for (int i = 1; i <= n; ++i) ans *= i;
+    return ans;
+}
+
+// probability that sum of n i.i.d. on [0, 1] lies between m - 1 and m 
+double prob_sum_between(int n, int m) {
+     return 1.* A(n, m) / f(n);
+}
+
 int main() {
 
     return 0;

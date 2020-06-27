@@ -21,6 +21,7 @@ int A(int n, int m) {
    }
    int ans = (n - m) * A(n - 1, m - 1) + (m + 1) * A(n - 1, m);
    A_dp[{n, m}] = ans;
+   return ans;
 }
     
 int main() {

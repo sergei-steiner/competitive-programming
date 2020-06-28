@@ -9,6 +9,9 @@ typedef long long int64;
 
 using namespace std;
 
+// https://leetcode.com/problems/restore-the-array
+// dp classics
+
 class Solution {
 public:
     int mod = 1000000007;

@@ -27,7 +27,7 @@ public:
                     dp[i][j] = max(dp[i][j], dp[i - 1][j]);
                 }
                 if (j - a[i - 1] >= 0 && dp[i - 1][j - a[i - 1]] > -inf) {
-                    dp[i][j] = max(dp[i][j], dp[i - 1][j - a[i - 1]]+ a[i - 1]);
+                    dp[i][j] = max(dp[i][j], dp[i - 1][j - a[i - 1]] + a[i - 1]);
                 }
                 if (j + a[i - 1] <= m && dp[i - 1][j + a[i - 1]] > -inf) {
                     dp[i][j] = max(dp[i][j], dp[i - 1][j + a[i - 1]]);

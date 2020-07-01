@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
     
+// https://en.wikipedia.org/wiki/Solovay–Strassen_primality_test
+
 int64 gcd(int64 a, int64 b) {
     return b ? gcd(b, a % b) : a;
 }

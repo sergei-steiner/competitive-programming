@@ -8,6 +8,8 @@
 typedef long long int64;
 
 using namespace std;
+
+// https://en.wikipedia.org/wiki/Jacobi_symbol
     
 int64 gcd(int64 a, int64 b) {
     return b ? gcd(b, a % b) : a;

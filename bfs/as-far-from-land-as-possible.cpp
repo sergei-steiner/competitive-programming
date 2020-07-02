@@ -11,9 +11,9 @@ using namespace std;
 
 // https://leetcode.com/problems/as-far-from-land-as-possible
 
-// simple, two tricks
-// start from multiple vertices
-// ignore "manhattan distance" part
+// simple, two tricks:
+// 1) start from multiple vertices
+// 2) ignore "manhattan distance" part
 
 class Solution {
 public:

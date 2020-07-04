@@ -32,6 +32,7 @@ public:
         color[v] = 2;
         order.push_back(v);
     }
+    
     string alienOrder(vector<string>& words) {
         vector<set<int>> g_set(26);
         for (int i = 1; i < words.size(); ++i) {

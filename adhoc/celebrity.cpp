@@ -11,19 +11,31 @@ using namespace std;
 
 // https://www.geeksforgeeks.org/the-celebrity-problem/
 
-int find_celebrity(const vector<vector<int>>& a) {
-    int n = a.size();
-    int i = 0;
-    int j = n - 1;
-    while (i < j) {
-        if (a[i][j]) {
-            ++i;
-        } else {
-            --j;
+// https://leetcode.com/problems/find-the-celebrity
+
+/* The knows API is defined for you.
+      bool knows(int a, int b); */
+
+class Solution {
+public:
+    int findCelebrity(int n) {
+        int i = 0;
+        int j = n - 1;
+        while (i < j) {
+            if (knows(i, j)) {
+                ++i;
+            } else {
+                --j;
+           }
         }
+        for (int j = 0; j < n; ++j) {
+            if (i == j) continue;
+            if (knows(i, j)) return -1;
+            if (!knows(j, i)) return -1;
+        }
+        return i;
     }
-    return i;
-}
+};
     
 int main() {
 

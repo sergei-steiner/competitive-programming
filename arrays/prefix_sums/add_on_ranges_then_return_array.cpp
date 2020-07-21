@@ -9,22 +9,20 @@ typedef long long int64;
 
 using namespace std;
 
-// https://leetcode.com/problems/corporate-flight-bookings
+// https://leetcode.com/problems/range-addition
 class Solution {
 public:
-    vector<int> corpFlightBookings(vector<vector<int>>& add, int n) {
+    vector<int> getModifiedArray(int n, vector<vector<int>>& a) {
         vector<int> ans(n, 0);
-        for (auto q : add) {
-            int i = q[0];
-            int j = q[1];
-            int k = q[2];
-            --i;
-            --j;
-            ans[j] += k;
-            if (i > 0) ans[i - 1] -= k;
+        for (auto v : a) {
+            int l = v[0];
+            int r = v[1];
+            int add = v[2];
+            ans[r] += add;
+            if (l > 0) ans[l - 1] -= add;
         }
-        for (int i = n - 1; i > 0; --i) {
-            ans[i - 1] += ans[i];
+        for (int i = n - 2; i >= 0; --i) {
+            ans[i] += ans[i + 1];
         }
         return ans;
     }

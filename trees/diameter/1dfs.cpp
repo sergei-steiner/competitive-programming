@@ -30,8 +30,6 @@ public:
                 }
             }
         }
-        m1;
-        m2;
         ans = max(ans, m1 + m2);
         return m1;
     }

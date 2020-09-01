@@ -9,9 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
-// https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst
-
 // speading up C(n, k) with help of arrays
+// https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst
 
 class Solution {
 public:

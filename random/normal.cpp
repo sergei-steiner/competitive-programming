@@ -9,6 +9,8 @@ typedef long long int64;
 
 using namespace std;
 
+// https://en.wikipedia.org/wiki/Box–Muller_transform
+
 constexpr int N = 1000000;
 
 double uniform() {

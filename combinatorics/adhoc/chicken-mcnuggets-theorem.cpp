@@ -12,6 +12,7 @@ using namespace std;
 // https://artofproblemsolving.com/wiki/index.php/Chicken_McNugget_Theorem
 
 int chicken_mcnuggets_value(int m, int n) {
+    // m, n should be relatively prime
     return m * n - m - n;
 }
     

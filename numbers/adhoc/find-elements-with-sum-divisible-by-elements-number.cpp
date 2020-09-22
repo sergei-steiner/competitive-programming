@@ -8,7 +8,38 @@
 typedef long long int64;
 
 using namespace std;
-    
+ 
+// https://leetcode.com/problems/make-sum-divisible-by-p
+
+class Solution {
+public:
+    int minSubarray(vector<int>& nums, int p) {
+        long long sum = 0;
+        for (int x : nums) sum += x;
+        sum %= p;
+        if (sum == 0) return 0;
+        unordered_map<int, int> prev;
+        prev[0] = -1;
+        int n = nums.size();
+        int ans = n;
+        long long prefix = 0;
+        for (int i = 0; i < n; ++i) {
+            prefix += nums[i];
+            prefix %= p;
+            int target = prefix - sum;
+            target %= p;
+            target += p;
+            target %= p;
+            if (prev.count(target)) {
+                ans = min(ans, i - prev[target]);
+            }
+            prev[prefix] = i;
+        }
+        return (ans >= n ? -1 : ans);
+    }
+};
+
+
 int main() {
 
     int n;

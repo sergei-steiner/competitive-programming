@@ -19,7 +19,7 @@ public:
         long long inf = 1000000000000L;
         vector<vector<long long>> dp1(n, vector<long long> (m, inf));
         vector<vector<long long>> dp2(n, vector<long long> (m, -inf));
-        int mod = 10000000007;
+        int mod = 100000007;
         dp1[0][0] = a[0][0];
         dp2[0][0] = a[0][0];
         for (int i = 0; i < n; ++i) {

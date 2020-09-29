@@ -36,7 +36,7 @@ int main() {
     for (int i = 0; i < n; ++i) {
         int x;
         cin >> x;
-        can = can | (can << x);
+        can |= (can << x);
     }
 
     if (can[W]) {

@@ -1,6 +1,6 @@
 /*
 
-https://www.youtube.com/watch?v=jqJ5s077OKo
+https://youtu.be/jqJ5s077OKo
 
 There are N≤5000 workers.
 

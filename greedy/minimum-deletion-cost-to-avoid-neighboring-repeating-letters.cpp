@@ -11,9 +11,12 @@ using namespace std;
 
 // https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters
 
-// this one is the simplest, but it modifies the cost array!
-// I used stack first, but the you actually don't need one, 
-// no while pop loop here, just one if is enough to go 
+// very simple problem
+
+
+// the first two solutions are very straightforward
+// if we have two equals, just delete the cheapest
+// no need for stack, just one comparison is somehow always enough
 
 class Solution {
 public:
@@ -55,6 +58,30 @@ public:
             }
         }
         return ans;
+    }
+};
+
+// now, in a nutshell
+// we just need to substract sum of all max costs for groups of equals from sum of all numbers
+
+class Solution3 {
+public:
+    int minCost(string s, vector<int>& cost) {
+        int n = s.size();
+        int sum = 0;
+        int sum_max = 0;
+        int max_val = 0; 
+        for (int i = 0; i < n; ++i) {
+            sum += cost[i];
+            if (i == 0 || s[i] == s[i - 1]) {
+                max_val = max(max_val, cost[i]);
+            } else {
+                sum_max += max_val;
+                max_val = cost[i];
+            }
+        } 
+        sum_max += max_val;
+        return sum - sum_max;
     }
 };
 

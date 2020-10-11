@@ -60,7 +60,7 @@ public:
     }
 };
 
-// the intended solution O(n ^ 2)
+// the intended solution O(nm)
 
 class Solution2 {
 public:
@@ -74,6 +74,34 @@ public:
                 rowSum[i] -= a[i][j];
                 colSum[j] -= a[i][j];
             }
+        }
+        return a;
+    }
+};
+
+// the O(n + m) speed-up
+// but don't forget, we still need to allocate O(nm) matrix
+
+class Solution3 {
+public:
+    vector<vector<int>> restoreMatrix(vector<int>& rowSum, vector<int>& colSum) {
+        int n = rowSum.size();
+        int m = colSum.size();
+        vector<vector<int>> a(n, vector<int>(m, 0));
+        int i = 0;
+        int j = 0;
+        while (i < n && j < m) {
+            if (!rowSum[i]) {
+                ++i;
+                continue;
+            }
+            if (!colSum[j]) {
+                ++j;
+                continue;
+            }
+            a[i][j] = min(rowSum[i], colSum[j]);
+            rowSum[i] -= a[i][j];
+            colSum[j] -= a[i][j];
         }
         return a;
     }

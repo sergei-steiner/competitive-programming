@@ -80,7 +80,8 @@ public:
 };
 
 // the O(n + m) speed-up
-// but don't forget, we still need to allocate O(nm) matrix
+// but don't forget, we still need to allocate O(nm) matrix\
+// so technically it is still O(nm)
 
 class Solution3 {
 public:

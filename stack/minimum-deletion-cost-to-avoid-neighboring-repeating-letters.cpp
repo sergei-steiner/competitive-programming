@@ -11,26 +11,48 @@ using namespace std;
 
 // https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters
 
+// this one is the simplest, but it modifies the cost array!
+// I used stack first, but the you actually don't need one, 
+// no while pop loop here, just one if is enough to go 
+
 class Solution {
 public:
     int minCost(string s, vector<int>& cost) {
         int n = s.size();
         int ans = 0;
-        string result_s; // "stack"
-        vector<int> result_cost; // "cost stack"
-        for (int i = 0; i < n; ++i) {
-            while (!result_s.empty() && result_s.back() == s[i]) {
-                if (result_cost.back() < cost[i]) {
-                    ans += result_cost.back();
+        for (int i = 1; i < n; ++i) {
+            if (s[i - 1] == s[i]) {
+                if (cost[i - 1] < cost[i]) {
+                    ans += cost[i - 1];
                 } else {
                     ans += cost[i];
-                    cost[i] = result_cost.back();
+                    cost[i] = cost[i - 1];
                 }
-                result_s.pop_back();
-                result_cost.pop_back();
             }
-            result_s.push_back(s[i]);
-            result_cost.push_back(cost[i]);
+        }
+        return ans;
+    }
+};
+
+// the very same, but without modifying cost array
+
+class Solution2 {
+public:
+    int minCost(string s, vector<int>& cost) {
+        int n = s.size();
+        int ans = 0;
+        int prev = cost[0];
+        for (int i = 1; i < n; ++i) {
+            if (s[i - 1] == s[i]) {
+                if (prev < cost[i]) {
+                    ans += prev;
+                    prev = cost[i];
+                } else {
+                    ans += cost[i];
+                }
+            } else {
+                prev = cost[i];
+            }
         }
         return ans;
     }

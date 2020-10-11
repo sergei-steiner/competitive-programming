@@ -16,8 +16,8 @@ public:
     int minCost(string s, vector<int>& cost) {
         int n = s.size();
         int ans = 0;
-        string result_s;
-        vector<int> result_cost;
+        string result_s; // "stack"
+        vector<int> result_cost; // "cost stack"
         for (int i = 0; i < n; ++i) {
             while (!result_s.empty() && result_s.back() == s[i]) {
                 if (result_cost.back() < cost[i]) {

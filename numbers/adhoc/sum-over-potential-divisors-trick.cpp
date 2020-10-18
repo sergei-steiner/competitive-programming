@@ -56,6 +56,8 @@ class Solution {
 public:
     vector<bool> areConnected(int n, int threshold, vector<vector<int>>& queries) {
         DSU dsu(n + 1);
+        
+        // the above mentioned cycles
         for (int i = threshold + 1; i <= n; ++i) {
             for (int j = 2 * i; j <= n; j += i) {
                 dsu.Union(j - i, j);

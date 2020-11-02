@@ -6,6 +6,8 @@ https://sites.cs.ucsb.edu/~neeraj/theory-meetup/uploads/linear-time-cp.pdf
 
 could be used for a line as well (but could also be done a bit simpler)
 
+tested on https://www.urionlinejudge.com.br/judge/en/problems/view/1295
+
 */
 
 #include <bits/stdc++.h>
@@ -86,6 +88,10 @@ double closest_pair(vector<pair<double, double>> p) {
     }
     return sqrt(r);
 }
+
+// https://www.urionlinejudge.com.br/judge/en/problems/view/1295
+// weak limits, O(n^2) passess as well
+// but this one is at least 2 times faster
 
 void solve_urionlinejudge() {
      while (true) {

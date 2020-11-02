@@ -1,3 +1,9 @@
+/*
+
+The main implementation of DSU I use!
+
+*/
+
 #include <bits/stdc++.h>
 
 #define sz(x) ((int)x.size())

@@ -11,6 +11,13 @@ using namespace std;
 
 // https://leetcode.com/problems/poor-pigs
 
+// (t + 1)^ans >= n
+
+// I kind of knew the solution for one turn
+// so I came up with inductive step for two turn
+// wich turned out to be binomial formula for (1 + 2)^n
+// the subsequent steps are kind of obvious
+
 class Solution {
 public:
     int poorPigs(int n, int minutesToDie, int minutesToTest) {

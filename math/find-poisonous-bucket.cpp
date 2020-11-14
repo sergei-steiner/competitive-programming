@@ -19,7 +19,12 @@ using namespace std;
 // so I came up with inductive step for two turn
 // wich turned out to be binomial formula for (1 + 2)^n
 // the subsequent steps are kind of obvious
+
 // but the solution above is easier to digest
+// the key point is that you can actually get it AC in 2 minutes
+// but assessing the max amount of information one can get
+// which is exactly (t + 1)^ans
+// (then you'd better prove you can actually get it)
 
 class Solution {
 public:

@@ -85,13 +85,49 @@ public:
     }
 };
 
-using WeigtedTree = vector<vector<pair<int, int>>>;
+class SparseTable {
+public:
+    vector<vector<int>> t;
+    int n;
+    vector<int> log;
+
+    SparseTable() = default;
+
+    SparseTable(const vector<int>& a)
+        : n(a.size())
+        , log(n + 1, 0)
+    {
+        t.push_back(a);
+        int len = 1;
+        while (len * 2 <= n) {
+            vector<int>& current = t.back();
+            vector<int> next(n, 0);
+            for (int i = 0; i + len < n; ++i) {
+                next[i] = max(current[i], current[i + len]);
+            }
+            t.push_back(next);
+            len *= 2;
+        }
+        for (int i = 2; i <= n; ++i) {
+            log[i] = max(log[i - 1], log[i / 2] + 1);
+        }
+    }
+
+    int get_max(int l, int r) const {
+        int log2 = log[r - l + 1];
+        return max(t[log2][l], t[log2][r + 1 - (1 << log2)]);
+    }
+};
+
+using WeightedTree = vector<vector<pair<int, int>>>;
 
 class LinearTree {
 public:
     unordered_map<int, int> order;
     vector<int> weights;
-    LinearTree(const WeigtedTree& g)
+    SparseTable st;
+
+    LinearTree(const WeightedTree& g)
     {
         int n = g.size(); 
         // sort edges
@@ -117,6 +153,7 @@ public:
              weights.push_back(w);
         }
 
+        st = SparseTable(weights);
     }
 
     int get_max(int u, int v) {
@@ -126,13 +163,18 @@ public:
     int get_reordered_max(int u, int v) {
         if (u > v) swap(u, v);
 
-        // naive for now
+        /*
+        naive for now
         int ans = weights[u];
         while (u < v) {
             ans = max(ans, weights[u]);
             ++u;
         }
+
         return ans;
+        */
+
+        return st.get_max(u, v - 1);
     }
 };
 
@@ -142,7 +184,7 @@ int main() {
     int n;
     cin >> n;
 
-    WeigtedTree g(n);
+    WeightedTree g(n);
     for (int i = 0; i + 1 < n; ++i) {
         int x;
         cin >> x;

@@ -11,6 +11,18 @@ using namespace std;
 
 // https://leetcode.com/problems/minimize-deviation-in-array
 
+/*
+
+can actually be generalized:
+
+for each position you have a list of possible values
+
+the solution would be essentially the same
+
+but a bit trickier
+
+*/
+
 // via multisets
 
 class Solution {

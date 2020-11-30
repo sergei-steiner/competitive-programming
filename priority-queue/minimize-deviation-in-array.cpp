@@ -47,7 +47,7 @@ public:
 
 // via priority queue, a bit faster
 
-class Solution {
+class Solution2 {
 public:
     int minimumDeviation(vector<int>& a) {
         int n = a.size();

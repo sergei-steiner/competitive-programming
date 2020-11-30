@@ -9,6 +9,11 @@ typedef long long int64;
 
 using namespace std;
 
+// https://leetcode.com/problems/find-the-most-competitive-subsequence
+
+// kind of straightforward
+// O(n log n)
+
 class Solution {
 public:
     vector<int> mostCompetitive(vector<int>& nums, int k) {
@@ -29,6 +34,24 @@ public:
                 ++j;
             }
             a.erase(a.find(nums[i]));
+        }
+        return ans;
+    }
+};
+
+// stack based
+// O(n)
+
+class Solution {
+public:
+    vector<int> mostCompetitive(vector<int>& a, int k) {
+        int n = a.size();
+        vector<int> ans;
+        for (int i = 0; i < n; ++i) {
+            while (!ans.empty() && ans.back() > a[i] && ans.size() - 1 + n - i >= k) {
+                ans.pop_back();
+            }
+            if (ans.size() < k) ans.emplace_back(a[i]);
         }
         return ans;
     }

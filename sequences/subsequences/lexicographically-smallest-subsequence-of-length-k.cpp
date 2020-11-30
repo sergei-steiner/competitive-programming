@@ -42,7 +42,7 @@ public:
 // stack based
 // O(n)
 
-class Solution {
+class Solution2 {
 public:
     vector<int> mostCompetitive(vector<int>& a, int k) {
         int n = a.size();

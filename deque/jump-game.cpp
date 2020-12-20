@@ -34,6 +34,33 @@ public:
         return dp[n - 1];
     }
 };
+
+// O(n + k)
+// "monoqueue" solution via deqeue
+
+class Solution2 {
+public:
+    int maxResult(vector<int>& a, int k) {
+        int n = a.size();
+        vector<int> dp(n, 0);
+        dp[0] = a[0];
+        deque<int> d;
+        d.push_back(0);
+        for (int i = 1; i < n; ++i) {
+            dp[i] = a[i] + dp[d.front()];
+            
+            while (!d.empty() && dp[d.back()] < dp[i]) {
+                d.pop_back();
+            }
+            d.push_back(i);
+            
+            if (d.front() <= i - k) {
+                d.pop_front();
+            }
+        }
+        return dp[n - 1];
+    }
+};
     
 int main() {
 

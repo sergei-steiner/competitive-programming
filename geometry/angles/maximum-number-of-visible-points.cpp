@@ -11,6 +11,12 @@ using namespace std;
 
 // https://leetcode.com/problems/maximum-number-of-visible-points
 
+/*
+O(n log n) sorting and O(n) simple sliding window
+just couple of tricks
+1. Pay attention to points lying in origin, they should be handled separately
+2. For simplicity sake, double the whole array and add 360 to all angles 
+*/
 class Solution {
 public:
     double pi = 4.0 * atan(1.0); 

@@ -11,6 +11,11 @@ using namespace std;
 
 // https://leetcode.com/problems/reach-a-number/
 
+// basic idea:
+// we sweep the whole [-n * (n + 1) / 2, n * (n + 1) / 2] segment with respect to oddity
+// so reach the needed n, than wait for the same value % 2
+
+
 // O(sqrt(n))
 
 class Solution {

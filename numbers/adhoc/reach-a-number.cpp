@@ -12,7 +12,6 @@ using namespace std;
 // https://leetcode.com/problems/reach-a-number/
 
 // O(sqrt(n))
-// could be easily done in O(1)
 
 class Solution {
 public:
@@ -22,6 +21,19 @@ public:
         while (n * (n + 1) / 2 < target) {
             ++n;
         }
+        while ((n * (n + 1) / 2) % 2 != target % 2) ++n;
+        return n;
+        
+    }
+};
+
+// O(1)
+
+class Solution {
+public:
+    int reachNumber(int target) {
+        if (target < 0) target *= -1;
+        long long n  = ceil((sqrt(1 + 8.0 * target) - 1) / 2);
         while ((n * (n + 1) / 2) % 2 != target % 2) ++n;
         return n;
         

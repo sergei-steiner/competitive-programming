@@ -65,6 +65,31 @@ public:
         return ans;
     }
 };
+
+// more elegant one
+// https://leetcode.com/problems/where-will-the-ball-fall/discuss/988576/JavaC%2B%2BPython-Solution-with-Explanation
+
+class Solution2 {
+public:
+    vector<int> findBall(vector<vector<int>>& a) {
+        int m = a.size();
+        int n = a[0].size();
+        vector<int> ans;
+        for (int j = 0; j < n; ++j) {
+            int y = j;
+            for (int i = 0; i < m; ++i) {
+                int new_y = y + a[i][y];
+                if (new_y < 0 || new_y >= n || a[i][y] != a[i][new_y]) {
+                    y = -1;
+                    break;
+                }
+                y = new_y;
+            }
+            ans.push_back(y);
+        }
+        return ans;
+    }
+};
     
 int main() {
 

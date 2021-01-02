@@ -38,6 +38,10 @@ struct Fenwick {
             i |= (i + 1);
         }
     }
+    
+    void update(int i, int x) {
+        inc(i, x - sum(i, i));
+    }
 };
 
 int main() {

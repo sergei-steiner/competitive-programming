@@ -9,7 +9,7 @@ typedef long long int64;
 
 using namespace std;
 
-// https://leetcode.com/problems/magnetic-force-between-two-balls
+// example: https://leetcode.com/problems/magnetic-force-between-two-balls
 
 class Solution {
 public:

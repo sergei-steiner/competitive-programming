@@ -9,6 +9,9 @@ typedef long long int64;
 
 using namespace std;
 
+// the task is probably to find the first 1 in 0-1 sorted array
+// how to find it on leetcode?
+
 int leftestOne(const vector<int>& a) {
     int n = a.size();
     int ans = n;

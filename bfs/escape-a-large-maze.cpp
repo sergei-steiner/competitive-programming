@@ -78,6 +78,68 @@ public:
     }
 };
 
+// https://leetcode.com/problems/escape-a-large-maze/discuss/974779/BFS-O(block2)
+// O(B^2) as well, but the constant is smaller
+
+class Solution2 {
+public:
+    int max_area = 0;
+    bool is_valid(int x, int y) {
+        return x >= 0 && y >= 0 && x < 1000000 && y < 1000000;
+    }
+    bool bfs(unordered_map<int, unordered_map<int, int>> a, int x1, int y1, int x2, int y2) {
+        int cnt = 0;
+        queue<pair<int, int>> q;
+        q.push({x1, y1});
+        a[x1][y1] = 2;
+        while (!q.empty()) {
+            ++cnt;
+            if (cnt > max_area) return true;
+            auto [x, y] = q.front();
+            q.pop();
+            if (x == x2 && y == y2) return true;
+            if (is_valid(x + 1, y) && a[x + 1][y] == 0) {
+                q.push({x + 1, y});
+                a[x + 1][y] = 2;
+            }
+            if (is_valid(x - 1, y) && a[x - 1][y] == 0) {
+                q.push({x - 1, y});
+                a[x - 1][y] = 2;
+            }
+            if (is_valid(x, y + 1) && a[x][y + 1] == 0) {
+                q.push({x, y + 1});
+                a[x][y + 1] = 2;
+            }
+            if (is_valid(x, y - 1) && a[x][y - 1] == 0) {
+                q.push({x, y - 1});
+                a[x][y - 1] = 2;
+            }
+        }
+        return false;
+    }
+    
+    bool isEscapePossible(vector<vector<int>>& blocked, vector<int>& source, vector<int>& target) {
+        max_area = blocked.size() * (blocked.size() - 1) / 2;
+        
+        int x1 = source[0];
+        int y1 = source[1];
+        int x2 = target[0];
+        int y2 = target[1];
+        
+        unordered_map<int, unordered_map<int, int>> a;
+        for (auto v : blocked) {
+            a[v[0]][v[1]] = 1;    
+        }
+        a[x1][y1] = 0;
+        a[x2][y2] = 0;
+        
+        
+        
+        return bfs(a, x1, y1, x2, y2) && bfs(a, x2, y2, x1, x1);
+       
+    }
+};
+
 int main() {
 
     return 0;

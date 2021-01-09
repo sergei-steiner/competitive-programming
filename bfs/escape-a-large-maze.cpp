@@ -80,6 +80,7 @@ public:
 
 // https://leetcode.com/problems/escape-a-large-maze/discuss/974779/BFS-O(block2)
 // O(B^2) as well, but the constant is smaller
+// dfs is also ok
 
 class Solution2 {
 public:

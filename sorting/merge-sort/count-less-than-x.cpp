@@ -64,37 +64,6 @@ public:
 
 // with compression
 
-struct Fenwick {
-    int n = 0;
-    vector<int> t;
-
-    Fenwick(int n)
-        : n(n)
-        , t(vector<int>(n, 0))
-    {
-    }
-
-    int sum(int r) {
-        int result = 0;
-        while (r >= 0) {
-            result += t[r];
-            r = (r & (r + 1)) - 1;
-        }
-        return result;
-    }
-
-    int sum(int l, int r) {
-        return sum(r) - sum(l - 1);
-    }
-
-    void inc(int i, int delta) {
-        while (i < n) {
-            t[i] += delta;
-            i |= (i + 1);
-        }
-    }
-};
-
 class Solution2 {
 public:
     int createSortedArray(vector<int>& instructions) {
@@ -239,6 +208,10 @@ public:
         int j = middle + 1;
         vector<pair<int, int>> ans;
         ans.reserve(len);
+        
+        // we basically sort twice
+        // but this can we done in more clever fashion
+        // via handling equal values more carefully 
         for (int step = 0; step < len; ++step) {
             if (i > middle) {
                 ans.push_back(a[j]);
@@ -282,20 +255,6 @@ public:
         
         for (int step = left; step <= right; ++step) a[step] = ans[step - left];
     }
-    
-    void merge_sort_greater(vector<pair<int, int>>& a, int left, int right) {
-        int len = right - left + 1;
-        if (len <= 1) return;
-        int middle = (left + right) / 2;
-        merge_sort_greater(a, left, middle);
-        merge_sort_greater(a, middle + 1, right);
-        int i = left;
-        int j = middle + 1;
-        vector<pair<int, int>> ans;
-
-        
-
-        for (int step = left; step <= right; ++step) a[step] = ans[step - left];    }
     
     int createSortedArray(vector<int>& instructions) {
         int n = instructions.size();

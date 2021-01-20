@@ -51,6 +51,7 @@ public:
         return isValid3(s);
     }
 };
+
 int main() {
 
     return 0;

@@ -4,6 +4,13 @@ typedef long long int64;
 
 using namespace std;
 
+/*
+
+In the hidden 0-1 array you can query every 4 items to find the distribution of values (4-0, 3-1 or 2-2).
+Find the index of majority element.  
+
+*/
+
 // https://leetcode.com/problems/guess-the-majority-in-a-hidden-array
 
 /**

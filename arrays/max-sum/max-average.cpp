@@ -50,6 +50,40 @@ double MaxAverage(const vector<int>& a, int minLen, int iterations = 100) {
     return left;
 }
 
+// https://leetcode.com/problems/maximum-average-subarray-ii
+
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int n = nums.size();
+        double l = -10010;
+        double r = 10010;
+        for (int step = 0; step < 50 ; ++step) {
+            double m = (l + r) / 2;
+            vector<double> a;
+            a.push_back(0);
+            for (int x : nums) {
+                a.push_back(x - m + a.back());
+            }
+            double ans = -1e7;
+            vector<double> min_val(n + 1, 0);
+            for (int i = 1; i <= n; ++i) {
+                min_val[i] = min(min_val[i - 1], a[i]);
+                if (i >= k) {
+                    ans = max(ans, a[i] - min_val[i - k]);
+                }
+            }
+            if (ans > 0) {
+                l = m;
+            } else {
+                r = m;
+            }
+        }
+        return l;
+    }
+};
+
+
 int main() {
 
     return 0;

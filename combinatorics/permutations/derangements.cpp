@@ -8,6 +8,7 @@ using namespace std;
 // https://oeis.org/A000166
 
 // here are two recurrent formulas from oeis
+// could be done in O(1) memory of course
 // but inclusion-exclusion should also work in linear time
 
 class Solution {

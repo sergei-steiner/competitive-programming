@@ -89,7 +89,7 @@ struct MaxStack {
     }
 
     int pop() {
-        int val = st.top().second;
+        int val = st.top().first;
         st.pop();
         return val;
     }
